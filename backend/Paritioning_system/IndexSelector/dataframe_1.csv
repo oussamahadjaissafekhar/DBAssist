@@ -1,0 +1,13 @@
+Table,Attribute,NumberOfAccesses
+customer,c_city,43
+customer,c_region,5
+customer,c_nation,4
+dates,d_year,34
+dates,d_weeknuminyear,4
+lineorder,lo_discount,14
+lineorder,lo_quantity,12
+part,p_brand,9
+part,p_mfgr,2
+supplier,s_city,28
+supplier,s_region,14
+supplier,s_nation,4

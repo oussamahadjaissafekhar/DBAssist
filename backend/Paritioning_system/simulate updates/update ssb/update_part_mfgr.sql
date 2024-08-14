@@ -1,0 +1,9 @@
+UPDATE part
+SET p_mfgr = CASE p_mfgr
+    WHEN 'MFGR#1' THEN 'MFGR#2'
+    WHEN 'MFGR#2' THEN 'MFGR#3'
+    WHEN 'MFGR#3' THEN 'MFGR#4'
+    WHEN 'MFGR#4'THEN 'MFGR#5'
+    WHEN 'MFGR#5'THEN 'MFGR#1'
+END
+WHERE p_partkey = FLOOR(RANDOM() * 1400000);

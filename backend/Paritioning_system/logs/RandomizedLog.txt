@@ -1,0 +1,3798 @@
+2024-07-07 21:55:54.725 CEST [17064] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:55:54.764 CEST [17064] LOG:  duration: 54.073 ms
+2024-07-07 21:55:55.862 CEST [15140] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:55:55.869 CEST [15140] LOG:  duration: 7.126 ms
+2024-07-07 21:55:56.991 CEST [7328] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:55:56.996 CEST [7328] LOG:  duration: 8.128 ms
+2024-07-07 21:55:58.144 CEST [11708] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:55:58.153 CEST [11708] LOG:  duration: 9.533 ms
+2024-07-07 21:56:00.397 CEST [5988] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:00.401 CEST [5988] LOG:  duration: 4.336 ms
+2024-07-07 21:56:02.538 CEST [15760] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:02.541 CEST [15760] LOG:  duration: 6.601 ms
+2024-07-07 21:56:04.678 CEST [17244] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:04.681 CEST [17244] LOG:  duration: 3.510 ms
+2024-07-07 21:56:06.808 CEST [13032] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:06.811 CEST [13032] LOG:  duration: 3.332 ms
+2024-07-07 21:56:08.937 CEST [2108] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:08.944 CEST [2108] LOG:  duration: 7.218 ms
+2024-07-07 21:56:10.069 CEST [14548] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:10.075 CEST [14548] LOG:  duration: 6.590 ms
+2024-07-07 21:56:11.198 CEST [17336] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:11.201 CEST [17336] LOG:  duration: 3.205 ms
+2024-07-07 21:56:12.326 CEST [16604] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:12.333 CEST [16604] LOG:  duration: 7.421 ms
+2024-07-07 21:56:15.512 CEST [8036] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:15.517 CEST [8036] LOG:  duration: 5.772 ms
+2024-07-07 21:56:16.736 CEST [7936] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:16.743 CEST [7936] LOG:  duration: 7.715 ms
+2024-07-07 21:56:17.900 CEST [10156] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:17.903 CEST [10156] LOG:  duration: 3.805 ms
+2024-07-07 21:56:19.045 CEST [7756] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:19.050 CEST [7756] LOG:  duration: 6.433 ms
+2024-07-07 21:56:20.204 CEST [6352] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:20.208 CEST [6352] LOG:  duration: 4.361 ms
+2024-07-07 21:56:21.402 CEST [16972] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:21.406 CEST [16972] LOG:  duration: 4.746 ms
+2024-07-07 21:56:26.522 CEST [852] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:26.529 CEST [852] LOG:  duration: 7.005 ms
+2024-07-07 21:56:28.649 CEST [14120] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:28.652 CEST [14120] LOG:  duration: 3.288 ms
+2024-07-07 21:56:30.749 CEST [9528] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:30.757 CEST [9528] LOG:  duration: 7.951 ms
+2024-07-07 21:56:32.880 CEST [5492] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:32.883 CEST [5492] LOG:  duration: 3.882 ms
+2024-07-07 21:56:34.020 CEST [12096] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:34.023 CEST [12096] LOG:  duration: 3.656 ms
+2024-07-07 21:56:35.257 CEST [7580] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:35.260 CEST [7580] LOG:  duration: 3.970 ms
+2024-07-07 21:56:36.392 CEST [15500] LOG:  statement: UPDATE customer
+
+	SET c_address = 'St ' || FLOOR(RANDOM() * 100) || 'City ' || FLOOR(RANDOM() * 100)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:36.399 CEST [15500] LOG:  duration: 8.561 ms
+2024-07-07 21:56:40.539 CEST [3180] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:40.553 CEST [3180] LOG:  duration: 14.571 ms
+2024-07-07 21:56:42.661 CEST [4372] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:42.666 CEST [4372] LOG:  duration: 5.283 ms
+2024-07-07 21:56:43.778 CEST [11576] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:43.785 CEST [11576] LOG:  duration: 7.092 ms
+2024-07-07 21:56:44.898 CEST [12396] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:44.901 CEST [12396] LOG:  duration: 3.227 ms
+2024-07-07 21:56:46.009 CEST [10580] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:46.012 CEST [10580] LOG:  duration: 3.357 ms
+2024-07-07 21:56:47.143 CEST [948] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:47.146 CEST [948] LOG:  duration: 3.890 ms
+2024-07-07 21:56:50.269 CEST [7124] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:50.274 CEST [7124] LOG:  duration: 4.930 ms
+2024-07-07 21:56:52.400 CEST [1828] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:52.403 CEST [1828] LOG:  duration: 3.710 ms
+2024-07-07 21:56:54.543 CEST [12604] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:54.549 CEST [12604] LOG:  duration: 6.693 ms
+2024-07-07 21:56:55.669 CEST [10016] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:55.678 CEST [10016] LOG:  duration: 9.765 ms
+2024-07-07 21:56:56.912 CEST [3864] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:56.915 CEST [3864] LOG:  duration: 3.924 ms
+2024-07-07 21:56:59.007 CEST [16264] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:56:59.010 CEST [16264] LOG:  duration: 4.333 ms
+2024-07-07 21:57:02.177 CEST [11616] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:02.183 CEST [11616] LOG:  duration: 6.510 ms
+2024-07-07 21:57:04.293 CEST [3252] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:04.300 CEST [3252] LOG:  duration: 7.411 ms
+2024-07-07 21:57:05.397 CEST [6400] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:05.399 CEST [6400] LOG:  duration: 3.387 ms
+2024-07-07 21:57:06.530 CEST [10712] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:06.536 CEST [10712] LOG:  duration: 6.785 ms
+2024-07-07 21:57:07.641 CEST [7808] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:07.644 CEST [7808] LOG:  duration: 3.444 ms
+2024-07-07 21:57:08.763 CEST [5908] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:08.767 CEST [5908] LOG:  duration: 3.812 ms
+2024-07-07 21:57:09.872 CEST [16088] LOG:  statement: UPDATE customer
+
+	SET c_address = 'St ' || FLOOR(RANDOM() * 100) || 'City ' || FLOOR(RANDOM() * 100)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:09.875 CEST [16088] LOG:  duration: 3.375 ms
+2024-07-07 21:57:13.014 CEST [6804] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:13.017 CEST [6804] LOG:  duration: 3.830 ms
+2024-07-07 21:57:15.184 CEST [12356] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:15.189 CEST [12356] LOG:  duration: 6.404 ms
+2024-07-07 21:57:16.315 CEST [15604] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:16.319 CEST [15604] LOG:  duration: 3.545 ms
+2024-07-07 21:57:18.420 CEST [12736] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:18.423 CEST [12736] LOG:  duration: 3.441 ms
+2024-07-07 21:57:20.546 CEST [6864] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:20.548 CEST [6864] LOG:  duration: 3.410 ms
+2024-07-07 21:57:21.663 CEST [11420] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:21.670 CEST [11420] LOG:  duration: 7.437 ms
+2024-07-07 21:57:22.800 CEST [12492] LOG:  statement: UPDATE customer
+
+	SET c_name = 'Customer' || FLOOR(RANDOM() * 10000)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:22.802 CEST [12492] LOG:  duration: 3.386 ms
+2024-07-07 21:57:26.935 CEST [14912] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:26.937 CEST [14912] LOG:  duration: 3.078 ms
+2024-07-07 21:57:28.053 CEST [1648] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:28.060 CEST [1648] LOG:  duration: 7.436 ms
+2024-07-07 21:57:29.189 CEST [12304] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:29.191 CEST [12304] LOG:  duration: 3.057 ms
+2024-07-07 21:57:30.433 CEST [2260] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:30.437 CEST [2260] LOG:  duration: 4.552 ms
+2024-07-07 21:57:32.624 CEST [9204] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:32.626 CEST [9204] LOG:  duration: 3.290 ms
+2024-07-07 21:57:33.736 CEST [120] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:33.739 CEST [120] LOG:  duration: 3.920 ms
+2024-07-07 21:57:34.839 CEST [7044] LOG:  statement: UPDATE customer
+
+	SET c_name = 'Customer' || FLOOR(RANDOM() * 10000)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:34.846 CEST [7044] LOG:  duration: 6.942 ms
+2024-07-07 21:57:40.970 CEST [5968] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:40.973 CEST [5968] LOG:  duration: 3.221 ms
+2024-07-07 21:57:42.078 CEST [10940] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:42.085 CEST [10940] LOG:  duration: 7.115 ms
+2024-07-07 21:57:43.916 CEST [8144] LOG:  checkpoint starting: time
+2024-07-07 21:57:44.217 CEST [8428] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:44.219 CEST [8428] LOG:  duration: 3.238 ms
+2024-07-07 21:57:44.621 CEST [8144] LOG:  checkpoint complete: wrote 7 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.655 s, sync=0.019 s, total=0.706 s; sync files=7, longest=0.007 s, average=0.003 s; distance=33 kB, estimate=92 kB; lsn=2/F00B20E0, redo lsn=2/F00B20A8
+2024-07-07 21:57:45.320 CEST [4292] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:45.323 CEST [4292] LOG:  duration: 3.262 ms
+2024-07-07 21:57:46.421 CEST [3996] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:46.425 CEST [3996] LOG:  duration: 4.354 ms
+2024-07-07 21:57:47.549 CEST [11040] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:47.555 CEST [11040] LOG:  duration: 6.810 ms
+2024-07-07 21:57:49.696 CEST [14432] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:49.703 CEST [14432] LOG:  duration: 7.111 ms
+2024-07-07 21:57:50.822 CEST [4864] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:50.825 CEST [4864] LOG:  duration: 3.251 ms
+2024-07-07 21:57:52.920 CEST [14732] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:52.923 CEST [14732] LOG:  duration: 3.341 ms
+2024-07-07 21:57:55.045 CEST [17056] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:55.049 CEST [17056] LOG:  duration: 3.873 ms
+2024-07-07 21:57:57.160 CEST [7704] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:57.166 CEST [7704] LOG:  duration: 6.252 ms
+2024-07-07 21:57:59.288 CEST [9904] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:57:59.293 CEST [9904] LOG:  duration: 5.605 ms
+2024-07-07 21:58:02.431 CEST [13968] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:02.434 CEST [13968] LOG:  duration: 3.386 ms
+2024-07-07 21:58:03.538 CEST [15428] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:03.542 CEST [15428] LOG:  duration: 4.533 ms
+2024-07-07 21:58:05.662 CEST [10912] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:05.670 CEST [10912] LOG:  duration: 8.067 ms
+2024-07-07 21:58:06.938 CEST [8784] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:06.945 CEST [8784] LOG:  duration: 7.735 ms
+2024-07-07 21:58:08.271 CEST [16620] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:08.280 CEST [16620] LOG:  duration: 9.182 ms
+2024-07-07 21:58:10.392 CEST [11476] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:10.396 CEST [11476] LOG:  duration: 3.496 ms
+2024-07-07 21:58:11.514 CEST [4124] LOG:  statement: UPDATE customer
+
+	SET c_address = 'St ' || FLOOR(RANDOM() * 100) || 'City ' || FLOOR(RANDOM() * 100)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:11.521 CEST [4124] LOG:  duration: 7.533 ms
+2024-07-07 21:58:13.622 CEST [5044] LOG:  statement: UPDATE orders
+
+	SET o_orderpriority = CASE o_orderpriority
+
+	    WHEN '5-NONE' THEN '2-HIGH'
+
+	    WHEN '2-HIGH' THEN '1-URGENT'
+
+	    when '1-URGENT' THEN '5-NONE'
+
+	    ELSE o_orderpriority
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10)  -- Randomly select an order
+2024-07-07 21:58:13.626 CEST [5044] LOG:  duration: 4.750 ms
+2024-07-07 21:58:15.747 CEST [5356] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:15.753 CEST [5356] LOG:  duration: 6.218 ms
+2024-07-07 21:58:16.966 CEST [17156] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:16.969 CEST [17156] LOG:  duration: 4.175 ms
+2024-07-07 21:58:18.093 CEST [16904] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:18.096 CEST [16904] LOG:  duration: 4.020 ms
+2024-07-07 21:58:20.212 CEST [16804] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:20.219 CEST [16804] LOG:  duration: 7.940 ms
+2024-07-07 21:58:22.344 CEST [15964] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:22.347 CEST [15964] LOG:  duration: 4.270 ms
+2024-07-07 21:58:23.492 CEST [12164] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:23.498 CEST [12164] LOG:  duration: 6.849 ms
+2024-07-07 21:58:27.648 CEST [8780] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:27.652 CEST [8780] LOG:  duration: 4.274 ms
+2024-07-07 21:58:28.773 CEST [10968] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:28.780 CEST [10968] LOG:  duration: 7.315 ms
+2024-07-07 21:58:30.914 CEST [6424] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:30.922 CEST [6424] LOG:  duration: 8.296 ms
+2024-07-07 21:58:33.029 CEST [16392] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:33.032 CEST [16392] LOG:  duration: 3.397 ms
+2024-07-07 21:58:35.255 CEST [12188] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:35.262 CEST [12188] LOG:  duration: 7.117 ms
+2024-07-07 21:58:37.364 CEST [3176] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:37.367 CEST [3176] LOG:  duration: 3.539 ms
+2024-07-07 21:58:42.470 CEST [8004] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:42.473 CEST [8004] LOG:  duration: 3.302 ms
+2024-07-07 21:58:44.581 CEST [4408] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:44.586 CEST [4408] LOG:  duration: 5.233 ms
+2024-07-07 21:58:45.683 CEST [16576] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:45.685 CEST [16576] LOG:  duration: 3.249 ms
+2024-07-07 21:58:46.810 CEST [7188] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:46.813 CEST [7188] LOG:  duration: 3.269 ms
+2024-07-07 21:58:47.938 CEST [13204] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:47.941 CEST [13204] LOG:  duration: 3.313 ms
+2024-07-07 21:58:49.071 CEST [856] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:49.078 CEST [856] LOG:  duration: 6.834 ms
+2024-07-07 21:58:55.350 CEST [13596] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:55.355 CEST [13596] LOG:  duration: 6.506 ms
+2024-07-07 21:58:56.494 CEST [15924] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:56.501 CEST [15924] LOG:  duration: 7.106 ms
+2024-07-07 21:58:57.623 CEST [1860] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:57.630 CEST [1860] LOG:  duration: 6.981 ms
+2024-07-07 21:58:58.741 CEST [15004] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:58.745 CEST [15004] LOG:  duration: 3.867 ms
+2024-07-07 21:58:59.868 CEST [14376] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:58:59.871 CEST [14376] LOG:  duration: 3.137 ms
+2024-07-07 21:59:01.999 CEST [10440] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:02.006 CEST [10440] LOG:  duration: 6.790 ms
+2024-07-07 21:59:06.148 CEST [12656] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:06.152 CEST [12656] LOG:  duration: 4.266 ms
+2024-07-07 21:59:07.283 CEST [14140] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:07.286 CEST [14140] LOG:  duration: 3.353 ms
+2024-07-07 21:59:09.396 CEST [16888] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:09.403 CEST [16888] LOG:  duration: 7.091 ms
+2024-07-07 21:59:11.521 CEST [15088] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:11.525 CEST [15088] LOG:  duration: 4.316 ms
+2024-07-07 21:59:12.654 CEST [9724] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:12.658 CEST [9724] LOG:  duration: 4.339 ms
+2024-07-07 21:59:13.786 CEST [16688] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:13.789 CEST [16688] LOG:  duration: 3.926 ms
+2024-07-07 21:59:16.910 CEST [9636] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:16.916 CEST [9636] LOG:  duration: 6.520 ms
+2024-07-07 21:59:19.031 CEST [7060] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:19.035 CEST [7060] LOG:  duration: 4.163 ms
+2024-07-07 21:59:21.157 CEST [4916] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:21.160 CEST [4916] LOG:  duration: 3.569 ms
+2024-07-07 21:59:22.258 CEST [1564] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:22.261 CEST [1564] LOG:  duration: 3.061 ms
+2024-07-07 21:59:23.470 CEST [7728] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:23.474 CEST [7728] LOG:  duration: 4.125 ms
+2024-07-07 21:59:24.598 CEST [10064] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:24.600 CEST [10064] LOG:  duration: 3.079 ms
+2024-07-07 21:59:28.731 CEST [5916] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:28.733 CEST [5916] LOG:  duration: 3.236 ms
+2024-07-07 21:59:29.869 CEST [5220] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:29.873 CEST [5220] LOG:  duration: 4.359 ms
+2024-07-07 21:59:30.993 CEST [8860] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:30.995 CEST [8860] LOG:  duration: 3.363 ms
+2024-07-07 21:59:33.114 CEST [3216] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:33.117 CEST [3216] LOG:  duration: 3.449 ms
+2024-07-07 21:59:35.380 CEST [9448] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:35.384 CEST [9448] LOG:  duration: 4.572 ms
+2024-07-07 21:59:36.647 CEST [11060] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:36.654 CEST [11060] LOG:  duration: 7.296 ms
+2024-07-07 21:59:40.782 CEST [11548] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:40.785 CEST [11548] LOG:  duration: 3.215 ms
+2024-07-07 21:59:43.026 CEST [12100] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:43.029 CEST [12100] LOG:  duration: 3.380 ms
+2024-07-07 21:59:44.128 CEST [11184] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:44.132 CEST [11184] LOG:  duration: 4.323 ms
+2024-07-07 21:59:45.263 CEST [12004] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:45.265 CEST [12004] LOG:  duration: 3.094 ms
+2024-07-07 21:59:46.523 CEST [9416] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:46.526 CEST [9416] LOG:  duration: 4.234 ms
+2024-07-07 21:59:48.657 CEST [2384] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:48.661 CEST [2384] LOG:  duration: 4.175 ms
+2024-07-07 21:59:51.763 CEST [8612] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:51.765 CEST [8612] LOG:  duration: 3.099 ms
+2024-07-07 21:59:52.877 CEST [11508] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:52.884 CEST [11508] LOG:  duration: 7.023 ms
+2024-07-07 21:59:54.572 CEST [7308] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:54.575 CEST [7308] LOG:  duration: 3.159 ms
+2024-07-07 21:59:55.674 CEST [6616] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:55.680 CEST [6616] LOG:  duration: 6.947 ms
+2024-07-07 21:59:56.780 CEST [11448] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:56.783 CEST [11448] LOG:  duration: 3.560 ms
+2024-07-07 21:59:59.033 CEST [11740] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 21:59:59.037 CEST [11740] LOG:  duration: 5.311 ms
+2024-07-07 22:00:02.161 CEST [12988] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:00:02.165 CEST [12988] LOG:  duration: 4.443 ms
+2024-07-07 22:00:03.271 CEST [13752] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:00:03.277 CEST [13752] LOG:  duration: 7.072 ms
+2024-07-07 22:00:04.374 CEST [13188] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:00:04.377 CEST [13188] LOG:  duration: 3.789 ms
+2024-07-07 22:00:06.479 CEST [3428] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:00:06.487 CEST [3428] LOG:  duration: 8.189 ms
+2024-07-07 22:00:08.604 CEST [7768] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:00:08.607 CEST [7768] LOG:  duration: 4.136 ms
+2024-07-07 22:00:10.707 CEST [14852] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:00:10.710 CEST [14852] LOG:  duration: 4.241 ms
+2024-07-07 22:02:43.623 CEST [8144] LOG:  checkpoint starting: time
+2024-07-07 22:02:44.663 CEST [8144] LOG:  checkpoint complete: wrote 10 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.002 s, sync=0.017 s, total=1.040 s; sync files=8, longest=0.005 s, average=0.003 s; distance=58 kB, estimate=88 kB; lsn=2/F00C0A60, redo lsn=2/F00C0A28
+2024-07-07 22:12:07.562 CEST [1356] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:07.565 CEST [1356] LOG:  duration: 3.306 ms
+2024-07-07 22:12:09.805 CEST [8784] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:09.808 CEST [8784] LOG:  duration: 3.276 ms
+2024-07-07 22:12:12.063 CEST [1504] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:12.066 CEST [1504] LOG:  duration: 4.277 ms
+2024-07-07 22:12:13.185 CEST [3492] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:13.187 CEST [3492] LOG:  duration: 3.097 ms
+2024-07-07 22:12:14.410 CEST [8992] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:14.413 CEST [8992] LOG:  duration: 3.667 ms
+2024-07-07 22:12:16.693 CEST [13756] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:16.696 CEST [13756] LOG:  duration: 3.469 ms
+2024-07-07 22:12:21.867 CEST [1468] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:21.870 CEST [1468] LOG:  duration: 4.548 ms
+2024-07-07 22:12:23.132 CEST [14128] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:23.139 CEST [14128] LOG:  duration: 7.099 ms
+2024-07-07 22:12:24.276 CEST [6880] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:24.280 CEST [6880] LOG:  duration: 4.491 ms
+2024-07-07 22:12:26.381 CEST [11420] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:26.387 CEST [11420] LOG:  duration: 6.549 ms
+2024-07-07 22:12:27.600 CEST [9624] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:27.604 CEST [9624] LOG:  duration: 4.207 ms
+2024-07-07 22:12:29.740 CEST [7724] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:29.746 CEST [7724] LOG:  duration: 6.474 ms
+2024-07-07 22:12:34.882 CEST [7380] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:34.889 CEST [7380] LOG:  duration: 6.692 ms
+2024-07-07 22:12:36.095 CEST [1744] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:36.099 CEST [1744] LOG:  duration: 4.070 ms
+2024-07-07 22:12:37.208 CEST [13668] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:37.212 CEST [13668] LOG:  duration: 4.614 ms
+2024-07-07 22:12:39.348 CEST [5300] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:39.351 CEST [5300] LOG:  duration: 3.230 ms
+2024-07-07 22:12:40.470 CEST [11928] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:40.472 CEST [11928] LOG:  duration: 3.164 ms
+2024-07-07 22:12:42.596 CEST [4280] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:42.600 CEST [4280] LOG:  duration: 3.717 ms
+2024-07-07 22:12:43.668 CEST [8144] LOG:  checkpoint starting: time
+2024-07-07 22:12:43.691 CEST [14172] LOG:  statement: UPDATE customer
+
+	SET c_address = 'St ' || FLOOR(RANDOM() * 100) || 'City ' || FLOOR(RANDOM() * 100)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:43.695 CEST [14172] LOG:  duration: 4.442 ms
+2024-07-07 22:12:44.129 CEST [8144] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.426 s, sync=0.014 s, total=0.461 s; sync files=5, longest=0.005 s, average=0.003 s; distance=14 kB, estimate=81 kB; lsn=2/F00C58C8, redo lsn=2/F00C4610
+2024-07-07 22:12:47.820 CEST [5472] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:47.826 CEST [5472] LOG:  duration: 6.899 ms
+2024-07-07 22:12:48.940 CEST [5152] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:48.947 CEST [5152] LOG:  duration: 7.266 ms
+2024-07-07 22:12:51.058 CEST [7040] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:51.064 CEST [7040] LOG:  duration: 6.438 ms
+2024-07-07 22:12:52.156 CEST [8736] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:52.163 CEST [8736] LOG:  duration: 7.341 ms
+2024-07-07 22:12:54.386 CEST [14932] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:54.394 CEST [14932] LOG:  duration: 7.707 ms
+2024-07-07 22:12:55.521 CEST [9940] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:55.524 CEST [9940] LOG:  duration: 3.257 ms
+2024-07-07 22:12:56.641 CEST [8476] LOG:  statement: UPDATE orders
+
+	SET o_orderpriority = CASE o_orderpriority
+
+	    WHEN '5-NONE' THEN '2-HIGH'
+
+	    WHEN '2-HIGH' THEN '1-URGENT'
+
+	    when '1-URGENT' THEN '5-NONE'
+
+	    ELSE o_orderpriority
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10)  -- Randomly select an order
+2024-07-07 22:12:56.647 CEST [8476] LOG:  duration: 6.203 ms
+2024-07-07 22:12:57.925 CEST [1152] LOG:  statement: UPDATE customer
+
+	SET c_name = 'Customer' || FLOOR(RANDOM() * 10000)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:12:57.931 CEST [1152] LOG:  duration: 5.917 ms
+2024-07-07 22:13:03.068 CEST [2972] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:03.071 CEST [2972] LOG:  duration: 3.218 ms
+2024-07-07 22:13:04.153 CEST [13020] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:04.156 CEST [13020] LOG:  duration: 3.454 ms
+2024-07-07 22:13:05.272 CEST [15568] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:05.275 CEST [15568] LOG:  duration: 3.227 ms
+2024-07-07 22:13:06.390 CEST [3796] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:06.393 CEST [3796] LOG:  duration: 3.449 ms
+2024-07-07 22:13:07.534 CEST [4748] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:07.538 CEST [4748] LOG:  duration: 4.567 ms
+2024-07-07 22:13:09.659 CEST [5460] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:09.661 CEST [5460] LOG:  duration: 3.239 ms
+2024-07-07 22:13:13.791 CEST [14960] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:13.794 CEST [14960] LOG:  duration: 3.346 ms
+2024-07-07 22:13:14.911 CEST [8300] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:14.914 CEST [8300] LOG:  duration: 3.249 ms
+2024-07-07 22:13:16.025 CEST [1000] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:16.028 CEST [1000] LOG:  duration: 3.313 ms
+2024-07-07 22:13:17.154 CEST [2844] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:17.157 CEST [2844] LOG:  duration: 3.483 ms
+2024-07-07 22:13:18.269 CEST [14748] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:18.273 CEST [14748] LOG:  duration: 4.458 ms
+2024-07-07 22:13:19.468 CEST [2384] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:19.472 CEST [2384] LOG:  duration: 4.664 ms
+2024-07-07 22:13:23.628 CEST [15976] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:23.631 CEST [15976] LOG:  duration: 3.200 ms
+2024-07-07 22:13:24.771 CEST [13252] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:24.774 CEST [13252] LOG:  duration: 3.011 ms
+2024-07-07 22:13:25.862 CEST [16792] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:25.865 CEST [16792] LOG:  duration: 3.293 ms
+2024-07-07 22:13:26.950 CEST [6120] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:26.953 CEST [6120] LOG:  duration: 3.507 ms
+2024-07-07 22:13:28.034 CEST [16744] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:28.041 CEST [16744] LOG:  duration: 7.088 ms
+2024-07-07 22:13:29.153 CEST [9916] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:29.156 CEST [9916] LOG:  duration: 3.464 ms
+2024-07-07 22:13:34.291 CEST [11052] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:34.293 CEST [11052] LOG:  duration: 3.224 ms
+2024-07-07 22:13:36.409 CEST [5616] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:36.411 CEST [5616] LOG:  duration: 3.002 ms
+2024-07-07 22:13:37.499 CEST [13068] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:37.502 CEST [13068] LOG:  duration: 3.247 ms
+2024-07-07 22:13:39.597 CEST [10068] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:39.603 CEST [10068] LOG:  duration: 6.476 ms
+2024-07-07 22:13:40.684 CEST [16512] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:40.687 CEST [16512] LOG:  duration: 3.427 ms
+2024-07-07 22:13:41.813 CEST [4352] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:41.819 CEST [4352] LOG:  duration: 6.707 ms
+2024-07-07 22:13:42.948 CEST [16412] LOG:  statement: UPDATE customer
+
+	SET c_address = 'St ' || FLOOR(RANDOM() * 100) || 'City ' || FLOOR(RANDOM() * 100)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:42.954 CEST [16412] LOG:  duration: 7.052 ms
+2024-07-07 22:13:44.210 CEST [16200] LOG:  statement: UPDATE orders
+
+	SET o_orderpriority = CASE o_orderpriority
+
+	    WHEN '5-NONE' THEN '2-HIGH'
+
+	    WHEN '2-HIGH' THEN '1-URGENT'
+
+	    when '1-URGENT' THEN '5-NONE'
+
+	    ELSE o_orderpriority
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10)  -- Randomly select an order
+2024-07-07 22:13:44.218 CEST [16200] LOG:  duration: 8.166 ms
+2024-07-07 22:13:47.359 CEST [10716] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:47.362 CEST [10716] LOG:  duration: 3.304 ms
+2024-07-07 22:13:48.595 CEST [10524] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:48.606 CEST [10524] LOG:  duration: 11.367 ms
+2024-07-07 22:13:49.736 CEST [15984] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:49.743 CEST [15984] LOG:  duration: 7.950 ms
+2024-07-07 22:13:50.873 CEST [5648] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:50.879 CEST [5648] LOG:  duration: 7.140 ms
+2024-07-07 22:13:52.012 CEST [14872] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:52.018 CEST [14872] LOG:  duration: 7.013 ms
+2024-07-07 22:13:53.121 CEST [4104] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:53.128 CEST [4104] LOG:  duration: 7.199 ms
+2024-07-07 22:13:58.404 CEST [15748] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:13:58.411 CEST [15748] LOG:  duration: 6.870 ms
+2024-07-07 22:14:00.546 CEST [6216] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:00.550 CEST [6216] LOG:  duration: 4.366 ms
+2024-07-07 22:14:01.649 CEST [2692] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:01.655 CEST [2692] LOG:  duration: 6.935 ms
+2024-07-07 22:14:02.741 CEST [1868] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:02.743 CEST [1868] LOG:  duration: 3.250 ms
+2024-07-07 22:14:04.979 CEST [6240] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:04.981 CEST [6240] LOG:  duration: 3.255 ms
+2024-07-07 22:14:06.093 CEST [16892] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:06.099 CEST [16892] LOG:  duration: 7.113 ms
+2024-07-07 22:14:11.217 CEST [3548] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:11.220 CEST [3548] LOG:  duration: 3.418 ms
+2024-07-07 22:14:12.315 CEST [9444] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:12.322 CEST [9444] LOG:  duration: 7.325 ms
+2024-07-07 22:14:14.405 CEST [9780] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:14.412 CEST [9780] LOG:  duration: 6.946 ms
+2024-07-07 22:14:15.521 CEST [9804] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:15.528 CEST [9804] LOG:  duration: 7.213 ms
+2024-07-07 22:14:16.632 CEST [14772] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:16.639 CEST [14772] LOG:  duration: 6.925 ms
+2024-07-07 22:14:17.777 CEST [7808] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:17.783 CEST [7808] LOG:  duration: 7.204 ms
+2024-07-07 22:14:21.899 CEST [10412] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:21.906 CEST [10412] LOG:  duration: 7.304 ms
+2024-07-07 22:14:22.998 CEST [15364] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:23.001 CEST [15364] LOG:  duration: 3.590 ms
+2024-07-07 22:14:24.105 CEST [9800] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:24.112 CEST [9800] LOG:  duration: 7.365 ms
+2024-07-07 22:14:25.217 CEST [14536] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:25.220 CEST [14536] LOG:  duration: 3.571 ms
+2024-07-07 22:14:27.343 CEST [6732] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:27.348 CEST [6732] LOG:  duration: 5.398 ms
+2024-07-07 22:14:29.611 CEST [15840] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:29.618 CEST [15840] LOG:  duration: 7.063 ms
+2024-07-07 22:14:32.733 CEST [16032] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:32.737 CEST [16032] LOG:  duration: 4.185 ms
+2024-07-07 22:14:34.865 CEST [6996] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:34.873 CEST [6996] LOG:  duration: 8.144 ms
+2024-07-07 22:14:36.996 CEST [5440] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:36.999 CEST [5440] LOG:  duration: 3.423 ms
+2024-07-07 22:14:39.099 CEST [14412] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:39.101 CEST [14412] LOG:  duration: 3.229 ms
+2024-07-07 22:14:41.220 CEST [9692] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:41.223 CEST [9692] LOG:  duration: 3.552 ms
+2024-07-07 22:14:42.360 CEST [3756] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:42.363 CEST [3756] LOG:  duration: 3.107 ms
+2024-07-07 22:14:44.488 CEST [16848] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:44.495 CEST [16848] LOG:  duration: 6.947 ms
+2024-07-07 22:14:45.620 CEST [16476] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:45.623 CEST [16476] LOG:  duration: 3.471 ms
+2024-07-07 22:14:46.758 CEST [4180] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:46.761 CEST [4180] LOG:  duration: 3.400 ms
+2024-07-07 22:14:48.008 CEST [11996] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:48.015 CEST [11996] LOG:  duration: 7.929 ms
+2024-07-07 22:14:49.134 CEST [988] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:49.137 CEST [988] LOG:  duration: 3.643 ms
+2024-07-07 22:14:50.239 CEST [7240] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:50.246 CEST [7240] LOG:  duration: 7.069 ms
+2024-07-07 22:14:54.377 CEST [16876] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:54.380 CEST [16876] LOG:  duration: 3.278 ms
+2024-07-07 22:14:55.497 CEST [17212] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:55.503 CEST [17212] LOG:  duration: 6.521 ms
+2024-07-07 22:14:56.613 CEST [8184] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:56.620 CEST [8184] LOG:  duration: 7.733 ms
+2024-07-07 22:14:58.880 CEST [1736] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:14:58.883 CEST [1736] LOG:  duration: 3.368 ms
+2024-07-07 22:15:01.101 CEST [15692] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:01.104 CEST [15692] LOG:  duration: 3.748 ms
+2024-07-07 22:15:02.201 CEST [12892] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:02.206 CEST [12892] LOG:  duration: 6.363 ms
+2024-07-07 22:15:07.297 CEST [6760] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:07.301 CEST [6760] LOG:  duration: 4.447 ms
+2024-07-07 22:15:09.391 CEST [9224] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:09.394 CEST [9224] LOG:  duration: 3.325 ms
+2024-07-07 22:15:10.494 CEST [9184] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:10.497 CEST [9184] LOG:  duration: 3.487 ms
+2024-07-07 22:15:11.619 CEST [3616] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:11.626 CEST [3616] LOG:  duration: 7.118 ms
+2024-07-07 22:15:12.744 CEST [10788] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:12.746 CEST [10788] LOG:  duration: 3.056 ms
+2024-07-07 22:15:13.860 CEST [7080] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:13.863 CEST [7080] LOG:  duration: 3.420 ms
+2024-07-07 22:15:14.990 CEST [6324] LOG:  statement: UPDATE customer
+
+	SET c_name = 'Customer' || FLOOR(RANDOM() * 10000)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:14.996 CEST [6324] LOG:  duration: 7.114 ms
+2024-07-07 22:15:18.128 CEST [1344] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:18.131 CEST [1344] LOG:  duration: 3.857 ms
+2024-07-07 22:15:19.232 CEST [14848] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:19.236 CEST [14848] LOG:  duration: 4.882 ms
+2024-07-07 22:15:20.365 CEST [14216] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:20.372 CEST [14216] LOG:  duration: 7.150 ms
+2024-07-07 22:15:22.501 CEST [10528] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:22.504 CEST [10528] LOG:  duration: 3.147 ms
+2024-07-07 22:15:23.623 CEST [12624] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:23.626 CEST [12624] LOG:  duration: 3.349 ms
+2024-07-07 22:15:24.751 CEST [5168] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:24.754 CEST [5168] LOG:  duration: 3.400 ms
+2024-07-07 22:15:28.887 CEST [14888] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:28.893 CEST [14888] LOG:  duration: 6.911 ms
+2024-07-07 22:15:30.984 CEST [8076] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:30.987 CEST [8076] LOG:  duration: 3.461 ms
+2024-07-07 22:15:33.092 CEST [11212] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:33.099 CEST [11212] LOG:  duration: 7.120 ms
+2024-07-07 22:15:34.353 CEST [7420] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:34.363 CEST [7420] LOG:  duration: 11.511 ms
+2024-07-07 22:15:35.466 CEST [14712] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:35.469 CEST [14712] LOG:  duration: 2.975 ms
+2024-07-07 22:15:37.674 CEST [4292] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:37.677 CEST [4292] LOG:  duration: 3.288 ms
+2024-07-07 22:15:42.769 CEST [13776] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:42.772 CEST [13776] LOG:  duration: 3.372 ms
+2024-07-07 22:15:44.875 CEST [11936] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:44.882 CEST [11936] LOG:  duration: 7.104 ms
+2024-07-07 22:15:45.986 CEST [8352] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:45.993 CEST [8352] LOG:  duration: 7.224 ms
+2024-07-07 22:15:48.102 CEST [12896] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:48.105 CEST [12896] LOG:  duration: 4.290 ms
+2024-07-07 22:15:50.205 CEST [9856] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:50.211 CEST [9856] LOG:  duration: 6.387 ms
+2024-07-07 22:15:52.304 CEST [12760] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:52.312 CEST [12760] LOG:  duration: 8.340 ms
+2024-07-07 22:15:58.426 CEST [4776] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:15:58.434 CEST [4776] LOG:  duration: 8.202 ms
+2024-07-07 22:16:00.542 CEST [16576] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:00.545 CEST [16576] LOG:  duration: 3.519 ms
+2024-07-07 22:16:02.679 CEST [12548] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:02.685 CEST [12548] LOG:  duration: 7.000 ms
+2024-07-07 22:16:03.809 CEST [17364] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:03.812 CEST [17364] LOG:  duration: 3.448 ms
+2024-07-07 22:16:04.940 CEST [7996] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:04.946 CEST [7996] LOG:  duration: 6.452 ms
+2024-07-07 22:16:06.052 CEST [12448] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:06.054 CEST [12448] LOG:  duration: 3.181 ms
+2024-07-07 22:16:12.191 CEST [9764] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:12.198 CEST [9764] LOG:  duration: 7.216 ms
+2024-07-07 22:16:14.304 CEST [13000] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:14.310 CEST [13000] LOG:  duration: 6.617 ms
+2024-07-07 22:16:16.440 CEST [10584] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:16.443 CEST [10584] LOG:  duration: 3.590 ms
+2024-07-07 22:16:17.661 CEST [6052] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:17.669 CEST [6052] LOG:  duration: 9.426 ms
+2024-07-07 22:16:19.824 CEST [3852] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:19.831 CEST [3852] LOG:  duration: 8.311 ms
+2024-07-07 22:16:20.953 CEST [9524] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:20.955 CEST [9524] LOG:  duration: 3.118 ms
+2024-07-07 22:16:27.073 CEST [7692] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:27.077 CEST [7692] LOG:  duration: 4.481 ms
+2024-07-07 22:16:28.210 CEST [2468] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:28.214 CEST [2468] LOG:  duration: 4.847 ms
+2024-07-07 22:16:29.421 CEST [13140] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:29.428 CEST [13140] LOG:  duration: 7.138 ms
+2024-07-07 22:16:30.587 CEST [13276] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:30.596 CEST [13276] LOG:  duration: 9.887 ms
+2024-07-07 22:16:32.728 CEST [6300] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:32.736 CEST [6300] LOG:  duration: 8.524 ms
+2024-07-07 22:16:33.860 CEST [5992] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:33.864 CEST [5992] LOG:  duration: 4.129 ms
+2024-07-07 22:16:35.992 CEST [14120] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:35.999 CEST [14120] LOG:  duration: 7.304 ms
+2024-07-07 22:16:37.111 CEST [2420] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:37.114 CEST [2420] LOG:  duration: 3.405 ms
+2024-07-07 22:16:39.246 CEST [15352] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:39.249 CEST [15352] LOG:  duration: 3.180 ms
+2024-07-07 22:16:40.356 CEST [11900] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:40.363 CEST [11900] LOG:  duration: 7.445 ms
+2024-07-07 22:16:41.478 CEST [10980] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:41.486 CEST [10980] LOG:  duration: 8.536 ms
+2024-07-07 22:16:42.602 CEST [13252] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:42.605 CEST [13252] LOG:  duration: 3.775 ms
+2024-07-07 22:16:44.726 CEST [10456] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:44.729 CEST [10456] LOG:  duration: 4.062 ms
+2024-07-07 22:16:45.837 CEST [10268] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:45.841 CEST [10268] LOG:  duration: 5.029 ms
+2024-07-07 22:16:46.965 CEST [5984] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:46.969 CEST [5984] LOG:  duration: 3.756 ms
+2024-07-07 22:16:49.082 CEST [12640] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:49.089 CEST [12640] LOG:  duration: 7.773 ms
+2024-07-07 22:16:51.215 CEST [11668] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:51.222 CEST [11668] LOG:  duration: 7.288 ms
+2024-07-07 22:16:53.325 CEST [10180] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:53.328 CEST [10180] LOG:  duration: 3.746 ms
+2024-07-07 22:16:57.454 CEST [14984] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:57.457 CEST [14984] LOG:  duration: 3.265 ms
+2024-07-07 22:16:58.542 CEST [4868] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:16:58.550 CEST [4868] LOG:  duration: 7.907 ms
+2024-07-07 22:17:00.659 CEST [13068] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:00.662 CEST [13068] LOG:  duration: 3.256 ms
+2024-07-07 22:17:02.767 CEST [8744] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:02.771 CEST [8744] LOG:  duration: 4.607 ms
+2024-07-07 22:17:04.885 CEST [11628] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:04.888 CEST [11628] LOG:  duration: 3.272 ms
+2024-07-07 22:17:05.976 CEST [11512] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:05.978 CEST [11512] LOG:  duration: 3.348 ms
+2024-07-07 22:17:10.248 CEST [9688] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:10.254 CEST [9688] LOG:  duration: 6.988 ms
+2024-07-07 22:17:11.370 CEST [14568] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:11.376 CEST [14568] LOG:  duration: 7.191 ms
+2024-07-07 22:17:12.487 CEST [6088] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:12.490 CEST [6088] LOG:  duration: 3.901 ms
+2024-07-07 22:17:14.614 CEST [8640] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:14.621 CEST [8640] LOG:  duration: 7.138 ms
+2024-07-07 22:17:16.743 CEST [16452] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:16.745 CEST [16452] LOG:  duration: 3.180 ms
+2024-07-07 22:17:17.882 CEST [7920] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:17.888 CEST [7920] LOG:  duration: 6.497 ms
+2024-07-07 22:17:20.999 CEST [11732] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:21.002 CEST [11732] LOG:  duration: 3.180 ms
+2024-07-07 22:17:22.131 CEST [5136] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:22.134 CEST [5136] LOG:  duration: 3.423 ms
+2024-07-07 22:17:24.241 CEST [12744] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:24.244 CEST [12744] LOG:  duration: 3.489 ms
+2024-07-07 22:17:25.360 CEST [16332] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:25.367 CEST [16332] LOG:  duration: 7.220 ms
+2024-07-07 22:17:26.483 CEST [3924] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:26.486 CEST [3924] LOG:  duration: 3.280 ms
+2024-07-07 22:17:27.573 CEST [7584] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:27.576 CEST [7584] LOG:  duration: 3.470 ms
+2024-07-07 22:17:32.836 CEST [16712] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:32.841 CEST [16712] LOG:  duration: 5.845 ms
+2024-07-07 22:17:33.970 CEST [856] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:33.977 CEST [856] LOG:  duration: 7.234 ms
+2024-07-07 22:17:35.093 CEST [864] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:35.100 CEST [864] LOG:  duration: 6.527 ms
+2024-07-07 22:17:36.209 CEST [16428] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:36.212 CEST [16428] LOG:  duration: 3.426 ms
+2024-07-07 22:17:38.475 CEST [3068] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:38.478 CEST [3068] LOG:  duration: 4.343 ms
+2024-07-07 22:17:40.584 CEST [12524] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:40.587 CEST [12524] LOG:  duration: 3.288 ms
+2024-07-07 22:17:41.699 CEST [15656] LOG:  statement: UPDATE customer
+
+	SET c_name = 'Customer' || FLOOR(RANDOM() * 10000)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:41.703 CEST [15656] LOG:  duration: 3.844 ms
+2024-07-07 22:17:42.783 CEST [14068] LOG:  statement: UPDATE orders
+
+	SET o_orderpriority = CASE o_orderpriority
+
+	    WHEN '5-NONE' THEN '2-HIGH'
+
+	    WHEN '2-HIGH' THEN '1-URGENT'
+
+	    when '1-URGENT' THEN '5-NONE'
+
+	    ELSE o_orderpriority
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10)  -- Randomly select an order
+2024-07-07 22:17:42.791 CEST [14068] LOG:  duration: 8.098 ms
+2024-07-07 22:17:43.136 CEST [8144] LOG:  checkpoint starting: time
+2024-07-07 22:17:44.622 CEST [8144] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.434 s, sync=0.028 s, total=1.486 s; sync files=11, longest=0.007 s, average=0.003 s; distance=61 kB, estimate=79 kB; lsn=2/F00D3A70, redo lsn=2/F00D3A38
+2024-07-07 22:17:46.927 CEST [7992] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:46.934 CEST [7992] LOG:  duration: 7.029 ms
+2024-07-07 22:17:48.177 CEST [12160] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:48.183 CEST [12160] LOG:  duration: 7.087 ms
+2024-07-07 22:17:49.281 CEST [7200] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:49.285 CEST [7200] LOG:  duration: 4.265 ms
+2024-07-07 22:17:50.409 CEST [13856] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:50.412 CEST [13856] LOG:  duration: 3.285 ms
+2024-07-07 22:17:51.545 CEST [15260] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:51.548 CEST [15260] LOG:  duration: 3.207 ms
+2024-07-07 22:17:52.679 CEST [16492] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:52.681 CEST [16492] LOG:  duration: 3.346 ms
+2024-07-07 22:17:54.801 CEST [16960] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:54.803 CEST [16960] LOG:  duration: 3.028 ms
+2024-07-07 22:17:56.928 CEST [10740] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:56.935 CEST [10740] LOG:  duration: 7.125 ms
+2024-07-07 22:17:58.055 CEST [7828] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:58.058 CEST [7828] LOG:  duration: 3.310 ms
+2024-07-07 22:17:59.161 CEST [2260] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:17:59.168 CEST [2260] LOG:  duration: 6.726 ms
+2024-07-07 22:18:00.250 CEST [7428] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:00.254 CEST [7428] LOG:  duration: 4.436 ms
+2024-07-07 22:18:01.356 CEST [3288] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:01.360 CEST [3288] LOG:  duration: 4.524 ms
+2024-07-07 22:18:05.481 CEST [9468] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:05.483 CEST [9468] LOG:  duration: 3.007 ms
+2024-07-07 22:18:06.613 CEST [4408] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:06.616 CEST [4408] LOG:  duration: 3.555 ms
+2024-07-07 22:18:08.735 CEST [15096] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:08.739 CEST [15096] LOG:  duration: 4.494 ms
+2024-07-07 22:18:09.849 CEST [4668] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:09.852 CEST [4668] LOG:  duration: 4.040 ms
+2024-07-07 22:18:11.072 CEST [4184] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:11.079 CEST [4184] LOG:  duration: 7.331 ms
+2024-07-07 22:18:12.196 CEST [5316] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:12.198 CEST [5316] LOG:  duration: 3.339 ms
+2024-07-07 22:18:13.284 CEST [17340] LOG:  statement: UPDATE customer
+
+	SET c_name = 'Customer' || FLOOR(RANDOM() * 10000)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:13.287 CEST [17340] LOG:  duration: 3.596 ms
+2024-07-07 22:18:14.383 CEST [988] LOG:  statement: UPDATE customer
+
+	SET c_address = 'St ' || FLOOR(RANDOM() * 100) || 'City ' || FLOOR(RANDOM() * 100)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:14.390 CEST [988] LOG:  duration: 7.721 ms
+2024-07-07 22:18:18.497 CEST [5340] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:18.500 CEST [5340] LOG:  duration: 3.393 ms
+2024-07-07 22:18:19.599 CEST [14924] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:19.602 CEST [14924] LOG:  duration: 3.815 ms
+2024-07-07 22:18:20.838 CEST [7704] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:20.845 CEST [7704] LOG:  duration: 7.001 ms
+2024-07-07 22:18:22.938 CEST [2464] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:22.942 CEST [2464] LOG:  duration: 4.549 ms
+2024-07-07 22:18:24.061 CEST [10628] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:24.069 CEST [10628] LOG:  duration: 8.022 ms
+2024-07-07 22:18:25.175 CEST [7512] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:25.179 CEST [7512] LOG:  duration: 4.192 ms
+2024-07-07 22:18:30.294 CEST [10112] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:30.297 CEST [10112] LOG:  duration: 3.033 ms
+2024-07-07 22:18:31.428 CEST [8904] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:31.431 CEST [8904] LOG:  duration: 3.052 ms
+2024-07-07 22:18:33.717 CEST [2596] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:33.721 CEST [2596] LOG:  duration: 4.673 ms
+2024-07-07 22:18:34.842 CEST [2032] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:34.849 CEST [2032] LOG:  duration: 7.327 ms
+2024-07-07 22:18:35.971 CEST [8140] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:35.978 CEST [8140] LOG:  duration: 7.489 ms
+2024-07-07 22:18:37.248 CEST [9772] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:37.255 CEST [9772] LOG:  duration: 7.286 ms
+2024-07-07 22:18:38.370 CEST [7392] LOG:  statement: UPDATE orders
+
+	SET o_orderpriority = CASE o_orderpriority
+
+	    WHEN '5-NONE' THEN '2-HIGH'
+
+	    WHEN '2-HIGH' THEN '1-URGENT'
+
+	    when '1-URGENT' THEN '5-NONE'
+
+	    ELSE o_orderpriority
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10)  -- Randomly select an order
+2024-07-07 22:18:38.377 CEST [7392] LOG:  duration: 7.009 ms
+2024-07-07 22:18:43.503 CEST [14636] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:43.506 CEST [14636] LOG:  duration: 3.554 ms
+2024-07-07 22:18:45.727 CEST [1428] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:45.734 CEST [1428] LOG:  duration: 7.373 ms
+2024-07-07 22:18:46.854 CEST [11396] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:46.857 CEST [11396] LOG:  duration: 3.462 ms
+2024-07-07 22:18:49.130 CEST [4388] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:49.137 CEST [4388] LOG:  duration: 7.724 ms
+2024-07-07 22:18:50.228 CEST [14432] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:50.231 CEST [14432] LOG:  duration: 3.290 ms
+2024-07-07 22:18:51.357 CEST [16544] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:51.360 CEST [16544] LOG:  duration: 3.224 ms
+2024-07-07 22:18:56.491 CEST [1332] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:56.495 CEST [1332] LOG:  duration: 3.632 ms
+2024-07-07 22:18:57.741 CEST [17260] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:57.744 CEST [17260] LOG:  duration: 3.265 ms
+2024-07-07 22:18:59.856 CEST [16900] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:18:59.859 CEST [16900] LOG:  duration: 3.670 ms
+2024-07-07 22:19:00.997 CEST [9000] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:01.000 CEST [9000] LOG:  duration: 3.285 ms
+2024-07-07 22:19:02.094 CEST [3032] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:02.097 CEST [3032] LOG:  duration: 3.349 ms
+2024-07-07 22:19:03.216 CEST [6100] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:03.219 CEST [6100] LOG:  duration: 3.114 ms
+2024-07-07 22:19:05.428 CEST [3136] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:05.435 CEST [3136] LOG:  duration: 7.066 ms
+2024-07-07 22:19:07.652 CEST [12000] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:07.655 CEST [12000] LOG:  duration: 3.435 ms
+2024-07-07 22:19:09.754 CEST [12952] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:09.758 CEST [12952] LOG:  duration: 4.350 ms
+2024-07-07 22:19:10.842 CEST [16508] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:10.845 CEST [16508] LOG:  duration: 3.578 ms
+2024-07-07 22:19:11.963 CEST [2016] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:11.966 CEST [2016] LOG:  duration: 3.226 ms
+2024-07-07 22:19:13.089 CEST [13944] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:13.092 CEST [13944] LOG:  duration: 3.443 ms
+2024-07-07 22:19:17.175 CEST [9488] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:17.178 CEST [9488] LOG:  duration: 3.267 ms
+2024-07-07 22:19:18.294 CEST [14932] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:18.300 CEST [14932] LOG:  duration: 6.654 ms
+2024-07-07 22:19:19.434 CEST [10688] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:19.437 CEST [10688] LOG:  duration: 3.238 ms
+2024-07-07 22:19:21.565 CEST [3140] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:21.571 CEST [3140] LOG:  duration: 6.487 ms
+2024-07-07 22:19:22.678 CEST [17200] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:22.684 CEST [17200] LOG:  duration: 6.849 ms
+2024-07-07 22:19:24.809 CEST [12924] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:24.812 CEST [12924] LOG:  duration: 3.419 ms
+2024-07-07 22:19:27.931 CEST [16760] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:27.938 CEST [16760] LOG:  duration: 7.402 ms
+2024-07-07 22:19:29.219 CEST [8860] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:29.226 CEST [8860] LOG:  duration: 8.203 ms
+2024-07-07 22:19:30.352 CEST [12676] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:30.355 CEST [12676] LOG:  duration: 3.520 ms
+2024-07-07 22:19:31.480 CEST [12496] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:31.483 CEST [12496] LOG:  duration: 3.174 ms
+2024-07-07 22:19:32.607 CEST [16424] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:32.614 CEST [16424] LOG:  duration: 7.095 ms
+2024-07-07 22:19:33.887 CEST [16920] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:33.890 CEST [16920] LOG:  duration: 3.433 ms
+2024-07-07 22:19:36.002 CEST [14964] LOG:  statement: UPDATE customer
+
+	SET c_name = 'Customer' || FLOOR(RANDOM() * 10000)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:36.005 CEST [14964] LOG:  duration: 3.277 ms
+2024-07-07 22:19:37.103 CEST [16192] LOG:  statement: UPDATE customer
+
+	SET c_address = 'St ' || FLOOR(RANDOM() * 100) || 'City ' || FLOOR(RANDOM() * 100)
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:37.110 CEST [16192] LOG:  duration: 7.102 ms
+2024-07-07 22:19:42.240 CEST [9824] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:42.246 CEST [9824] LOG:  duration: 6.986 ms
+2024-07-07 22:19:43.377 CEST [5492] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:43.380 CEST [5492] LOG:  duration: 3.179 ms
+2024-07-07 22:19:45.507 CEST [8372] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:45.513 CEST [8372] LOG:  duration: 6.384 ms
+2024-07-07 22:19:46.604 CEST [17008] LOG:  statement: UPDATE partsupp
+
+	SET ps_availqty = ps_availqty + (RANDOM() * 50 - 25),  -- Random change between -25 and 25
+
+	    ps_supplycost = ps_supplycost + (RANDOM() * 5 - 2.5)  -- Random change between -2.5 and 2.5
+
+	WHERE ps_partkey = FLOOR(RANDOM() * 10) AND ps_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:46.607 CEST [17008] LOG:  duration: 3.222 ms
+2024-07-07 22:19:48.835 CEST [7188] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:48.839 CEST [7188] LOG:  duration: 4.879 ms
+2024-07-07 22:19:49.968 CEST [12948] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:49.971 CEST [12948] LOG:  duration: 3.325 ms
+2024-07-07 22:19:52.102 CEST [16744] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:52.105 CEST [16744] LOG:  duration: 3.129 ms
+2024-07-07 22:19:53.360 CEST [8328] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:53.363 CEST [8328] LOG:  duration: 3.356 ms
+2024-07-07 22:19:54.614 CEST [1200] LOG:  statement: UPDATE supplier
+
+	SET s_acctbal = s_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE s_suppkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:54.622 CEST [1200] LOG:  duration: 8.385 ms
+2024-07-07 22:19:56.752 CEST [8776] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:56.759 CEST [8776] LOG:  duration: 7.444 ms
+2024-07-07 22:19:57.870 CEST [15416] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:57.877 CEST [15416] LOG:  duration: 7.317 ms
+2024-07-07 22:19:59.009 CEST [12196] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:19:59.016 CEST [12196] LOG:  duration: 7.103 ms
+2024-07-07 22:20:01.150 CEST [10680] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:01.154 CEST [10680] LOG:  duration: 4.068 ms
+2024-07-07 22:20:03.292 CEST [11128] LOG:  statement: UPDATE part
+
+	SET p_retailprice = p_retailprice + (RANDOM() * 10 - 5)  -- Random change between -5 and 5
+
+	WHERE p_partkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:03.295 CEST [11128] LOG:  duration: 3.545 ms
+2024-07-07 22:20:04.413 CEST [6020] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:04.416 CEST [6020] LOG:  duration: 3.190 ms
+2024-07-07 22:20:05.661 CEST [9044] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:05.668 CEST [9044] LOG:  duration: 7.971 ms
+2024-07-07 22:20:07.793 CEST [3168] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:07.799 CEST [3168] LOG:  duration: 7.236 ms
+2024-07-07 22:20:08.935 CEST [8936] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:08.941 CEST [8936] LOG:  duration: 6.757 ms
+2024-07-07 22:20:14.050 CEST [10452] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:14.057 CEST [10452] LOG:  duration: 7.645 ms
+2024-07-07 22:20:15.154 CEST [8852] LOG:  statement: UPDATE customer
+
+	SET c_acctbal = c_acctbal + (RANDOM() * 100 - 50)  -- Random change between -50 and 50
+
+	WHERE c_custkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:15.161 CEST [8852] LOG:  duration: 6.703 ms
+2024-07-07 22:20:16.271 CEST [15264] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:16.274 CEST [15264] LOG:  duration: 3.243 ms
+2024-07-07 22:20:18.389 CEST [14944] LOG:  statement: UPDATE orders
+
+	SET o_orderstatus = CASE o_orderstatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'P'
+
+	    WHEN 'P' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE o_orderkey = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:18.396 CEST [14944] LOG:  duration: 7.255 ms
+2024-07-07 22:20:19.524 CEST [3016] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:19.526 CEST [3016] LOG:  duration: 3.066 ms
+2024-07-07 22:20:20.637 CEST [4104] LOG:  statement: UPDATE lineitem
+
+	SET l_linestatus = CASE l_linestatus
+
+	    WHEN 'O' THEN 'F'
+
+	    WHEN 'F' THEN 'O'
+
+	    ELSE 'O'
+
+	END
+
+	WHERE l_orderkey = FLOOR(RANDOM() * 10) AND l_linenumber = FLOOR(RANDOM() * 10);
+2024-07-07 22:20:20.640 CEST [4104] LOG:  duration: 3.382 ms
+2024-07-08 10:13:44.269 CEST [15120] LOG:  statement: update lineitem set l_comment= 'Comment: '||l_comment;
+2024-07-08 10:13:44.272 CEST [15120] LOG:  duration: 6.432 ms
