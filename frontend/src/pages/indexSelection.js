@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Pipeline from '../components/indexingPipline';
 import WorkloadAnalyzer from '../components/WorkloadAnalyzer';
 import NavigationButtons from '../components/NavigationButtons';
+import InitialSelection from '../components/initialSelection';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../css/IndexSelection.css'; // Ensure this CSS file includes the animations
 
@@ -22,7 +23,7 @@ function IndexSelection() {
 
     return (
         <div style={{ textAlign: 'center' }}>
-            <Pipeline showText={currentStep === 0} currentStep={currentStep} />
+            <Pipeline currentStep={currentStep} />
             
             <TransitionGroup>
                 <CSSTransition
@@ -70,7 +71,7 @@ function IndexSelection() {
                                 unmountOnExit
                             >
                                 <div>
-                                    {/* Your Component for this step */}
+                                    <InitialSelection/>
                                 </div>
                             </CSSTransition>
                         )}
@@ -106,8 +107,7 @@ function IndexSelection() {
                 </CSSTransition>
             </TransitionGroup>
 
-            {/* Common Navigation Buttons */}
-            <NavigationButtons currentStep={currentStep} handleStepChange={handleStepChange} />
+            <NavigationButtons currentStep={currentStep} numbersteps={4} handleStepChange={handleStepChange} />
         </div>
     );
 }

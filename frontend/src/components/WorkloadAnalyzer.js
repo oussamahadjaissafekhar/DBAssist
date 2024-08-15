@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { analyzeWorkload } from '../api'; // Import the API function
 import '../css/WorkloadAnalyzer.css';
 
@@ -42,6 +42,7 @@ function WorkloadAnalyzer() {
             setData(response.data); // Update state with the fetched data
         } catch (error) {
             console.error("Error analyzing workload:", error);
+            setErrorMessage("Error analyzing workload.");
         } finally {
             setLoading(false);
         }
@@ -55,16 +56,12 @@ function WorkloadAnalyzer() {
                     Choose Workload File
                     <input type="file" onChange={handleFileChange} style={{ display: 'none' }} />
                 </label>
-                <button className="analyze-button" onClick={handleAnalyzeClick}>
-                    Analyze
+                <button className="analyze-button" onClick={handleAnalyzeClick} disabled={loading}>
+                    {loading ? 'Analyzing...' : 'Analyze'}
                 </button>
             </div>
-            
-            {/* Show the selected file name */}
-            {selectedFile && <p>Selected file: {selectedFile.name}</p>}
-            
             {/* Error message */}
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <p className="error-message">{errorMessage || '\u00A0'}</p>
 
             <div className="box">
                 <div className="box-header">
@@ -88,7 +85,7 @@ function WorkloadAnalyzer() {
                         <tbody>
                             {loading && !data.length ? (
                                 <tr>
-                                    <td colSpan="3"><div className="row-data">Loading...</div></td>
+                                    <td colSpan="3"><div className="row-loading">Loading...</div></td>
                                 </tr>
                             ) : data.length ? (
                                 data.map((item, index) => (
@@ -99,8 +96,8 @@ function WorkloadAnalyzer() {
                                     </tr>
                                 ))
                             ) : (
-                                <tr className="no-data hidden">
-                                    <td colSpan="3"><div className="row-data">No data available</div></td>
+                                <tr>
+                                    <td colSpan="3"><div className="row-unavailable">No data available</div></td>
                                 </tr>
                             )}
                         </tbody>

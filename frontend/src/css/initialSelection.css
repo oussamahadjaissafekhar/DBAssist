@@ -10,7 +10,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 10px 170px;
+    margin: 10px;
 
 }
 
@@ -48,7 +48,25 @@
 .analyze-button:hover {
     background-color: #218838;
 }
-
+.indexes-number {
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#indexes-number-text {
+    width: 120px;
+    color: #00113D;
+}
+#max-indexes {
+    width: 100px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 17px;
+    background-color: #EFEFEF;
+}
 /* Error message styling */
 .error-message {
     color: #dc3545;
@@ -75,42 +93,20 @@
     align-items: center;
 }
 
-.box-button {
-    background-color: rgba(68, 154, 255, 0.5);
-    color: #00113D;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    width: 200px;
-    cursor: pointer;
-    font-size: 20px;
-    font-family: 'Trispace', sans-serif;
-    font-weight: bold;
-}
-
-.box-button:hover{
-    background-color: rgba(0, 96, 205, 0.5);
-}
-
-.visualize-button {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 18px;
-}
-
-.box-button img {
-    width: 20px;
-    height: 20px;
-}
 
 .title {
     color: #9BAEBC;
     font-family: 'Trispace', sans-serif;
     font-weight: bold;
     font-size: 24px;
+
 }
 
+.total-indexes{
+    color: #9BAEBC;
+    font-family: 'Trispace', sans-serif;
+    font-weight: bold; 
+}
 .table-container {
     max-height: 250px;
     overflow-y: auto;
@@ -178,10 +174,15 @@ th, td {
     background-color: #EBEEF1;
 }
 
-.join-uses {
+.checkbox-container {
+        padding: 10px;
+    background-color: #EBEEF1;
     border-radius: 0 10px 10px 0;
 }
 
+.index-checkbox {
+    background-color: #9BAEBC;
+}
 /* Animation for table row */
 @keyframes fadeIn {
     from {

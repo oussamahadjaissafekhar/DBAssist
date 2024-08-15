@@ -4,15 +4,48 @@
     align-items: center;
     width: 100%; /* Full viewport width */
     flex-direction: column;
+    transition: min-height 0.5s ease-in-out; /* Animation for height change */
 }
 
 .pipeline-start {
     min-height: 90vh;
-    /* Additional styles for start state */
 }
 
 .pipeline-other {
-    min-height: 10vh;
+    min-height: 10vh; 
+    margin-top: 20px;
+}
+
+.pipeline-text {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade and slide effect */
+}
+
+.pipeline-text-hide {
+display: none;
+}
+
+.pipeline {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+.step {
+    width: 120px;
+    margin: 5px 25px;
+    text-align: center;
+    align-items: center;
+    color: rgba(0, 17, 61, 1);
+}
+.step-border {
+    width: 50px;
+    margin: 5px 50px;
 }
 
 .circle {
@@ -21,6 +54,7 @@
     border-radius: 50%;
     background-color: #ccc; /* Default color */
     display: inline-block;
+    transition: background-color 0.5s ease-in-out; /* Smooth color transition */
 }
 
 /* Style for previous steps' circles */
@@ -30,17 +64,19 @@
 
 /* Style for the current step's circle */
 .circle-current {
-    background-color: orange; /* Yellow color for the current circle */
+    background-color: rgb(252, 192, 81); /* Yellow color for the current circle */
 }
 
 /* Optional: border style for start/end circles */
 .circle-border {
     width: 30px;
-    height: 30px;}
+    height: 30px;
+}
 
 .line {
     width: 120px;
     height: 2px;
     background-color: #00113D; /* Default line color */
     display: inline-block;
+    transition: width 0.5s ease-in-out; /* Add an animation for line width, if desired */
 }

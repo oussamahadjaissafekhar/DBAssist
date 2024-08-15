@@ -4,7 +4,7 @@
 
 .fade-enter-active {
     opacity: 1;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
 }
 
 .fade-exit {
@@ -13,7 +13,7 @@
 
 .fade-exit-active {
     opacity: 0;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity 100ms ease-in-out;
 }
 
 /* Ensures that the start button does not move */

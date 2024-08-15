@@ -1,15 +1,14 @@
 import React from 'react';
-import '../css/pipeline.css'; // Ensure this file exists for styling
+import '../css/pipeline.css';
 
 const steps = ['Start', 'Analyze workload', 'Choose initial indexes', 'Execute queries', 'End']; // Steps for the pipeline
 
-function Pipeline({ showText, currentStep }) {
+function Pipeline({ currentStep }) {
     const containerClass = currentStep === 0 ? 'pipeline-container pipeline-start' : 'pipeline-container pipeline-other';
-
+    const stepsContainer = currentStep === 0 ? 'pipeline-text' : 'pipeline-text-hide';
     return (
         <div className={containerClass}>
-            {showText && (
-                <div className="pipeline-text">
+                <div className={stepsContainer}>
                     {steps.map((step, index) => (
                         <React.Fragment key={index}>
                             <div className={`step ${step === 'Start' || step === 'End' ? 'step-border' : ''}`}>
@@ -18,7 +17,6 @@ function Pipeline({ showText, currentStep }) {
                         </React.Fragment>
                     ))}
                 </div>
-            )}
             <div className="pipeline">
                 {steps.map((step, index) => {
                     let circleClass = '';

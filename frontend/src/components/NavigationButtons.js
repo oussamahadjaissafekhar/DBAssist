@@ -2,7 +2,7 @@
 import React from 'react';
 import '../css/NavigationButtons.css'; // Add any styles you need
 
-function NavigationButtons({ currentStep, handleStepChange }) {
+function NavigationButtons({ currentStep, handleStepChange , numbersteps}) {
     return (
         <div className='navigation-buttons'>
             {currentStep > 0 && (
@@ -10,7 +10,7 @@ function NavigationButtons({ currentStep, handleStepChange }) {
                     Previous
                 </button>
             )}
-            {currentStep < 4 && currentStep > 0 && (
+            {currentStep < numbersteps && currentStep > 0 && (
                 <button className='next-button' onClick={() => handleStepChange('next')}>
                     Next
                 </button>
