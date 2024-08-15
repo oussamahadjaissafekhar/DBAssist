@@ -1,0 +1,176 @@
+/* Overall styling for the workload analyzer component */
+.box {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 250px;
+
+}
+
+.upload-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    color: #00113D;
+    background-color: #EFEFEF;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-button input {
+    display: none;
+}
+
+.analyze-button {
+    padding: 10px 30px;
+    background-color: #86E7C4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.analyze-button:hover {
+    background-color: #218838;
+}
+
+/* Error message styling */
+.error-message {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Box container for the results */
+.box {
+    margin-top: 20px;
+    height: 350px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+/* Header of the result box */
+.box-header {
+    padding: 10px 60px;
+    color: #ffffff;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-button {
+    background-color: rgba(68, 154, 255, 0.5);
+    color: #00113D;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Trispace', sans-serif;
+    font-weight: bold;
+}
+.visualize-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.title {
+    color: #9BAEBC;
+    font-family: 'Trispace', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+
+}
+/* Table container */
+.table-container {
+    overflow: scroll;
+   padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px 0px;
+    text-align: center;
+}
+
+/* Row data styling */
+.row-data {
+    padding: 10px;
+    background-color: #EBEEF1;
+    border-radius: 10px 0 0 10px;
+}
+
+/* Detail styling */
+.detail {
+    padding: 10px;
+    background-color: #EBEEF1;
+}
+
+.join-uses {
+    border-radius: 0 10px 10px 0;
+}
+
+/* Animation for table row */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for no data row */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.row-data.show {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.row-data.hide {
+    animation: fadeOut 0.5s ease-out;
+}
+
+/* Animation when data is being loaded */
+.loading-row {
+    animation: fadeIn 0.5s ease-out;
+}

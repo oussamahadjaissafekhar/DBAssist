@@ -22,6 +22,23 @@ export async function disconnectFromDatabase() {
     }
 }
 
+export const analyzeWorkload = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await axios.post(`${API_BASE_URL}/analyze-workload`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        return response;
+    } catch (error) {
+        console.error("Error analyzing workload:", error);
+        throw error;
+    }
+};
+
 export const performPartitioning = async (data) => {
     const response = await axios.post(`${API_BASE_URL}/partition`, data);
     return response.data;

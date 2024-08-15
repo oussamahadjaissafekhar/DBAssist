@@ -1,0 +1,17 @@
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 5%;
+}
+
+.next-button, .prev-button {
+    width: fit-content;
+    padding: 10px 30px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: rgba(0, 17, 61, 1);
+    color: white;
+    font-family: 'Trispace', sans-serif; 
+    font-weight: bold;
+    font-size: 20px;
+  }

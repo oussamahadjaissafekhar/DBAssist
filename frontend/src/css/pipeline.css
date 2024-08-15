@@ -1,0 +1,46 @@
+.pipeline-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full viewport width */
+    flex-direction: column;
+}
+
+.pipeline-start {
+    min-height: 90vh;
+    /* Additional styles for start state */
+}
+
+.pipeline-other {
+    min-height: 10vh;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ccc; /* Default color */
+    display: inline-block;
+}
+
+/* Style for previous steps' circles */
+.circle-previous {
+    background-color: rgb(0, 186, 0); /* Green color for previous circles */
+}
+
+/* Style for the current step's circle */
+.circle-current {
+    background-color: orange; /* Yellow color for the current circle */
+}
+
+/* Optional: border style for start/end circles */
+.circle-border {
+    width: 30px;
+    height: 30px;}
+
+.line {
+    width: 120px;
+    height: 2px;
+    background-color: #00113D; /* Default line color */
+    display: inline-block;
+}

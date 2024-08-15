@@ -1,58 +1,23 @@
-# Node modules
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Build output
-build/
-dist/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Local environment files
-.env
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Log files
-*.log
-
-# Dependency directories
-jspm_packages/
-
-# OS-specific files
-.DS_Store
-Thumbs.db
-
-# Editor-specific files
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-
-# Coverage directory used by tools like istanbul
-coverage/
-
-# Next.js build output
-.next/
-
-# Nuxt.js build output
-.nuxt/
-
-# Gatsby files
-.cache/
-public/
-
-# Yarn Integrity file
-.yarn-integrity
-
-# Miscellaneous
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Storybook build output
-storybook-static/
-node_modules
-node_modules
-node_modules
