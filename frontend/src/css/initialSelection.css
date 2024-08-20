@@ -149,6 +149,9 @@ th, td {
     text-align: center;
 }
 
+th {
+    color:rgba(155, 174, 188, 1);
+}
 .row-data {
     padding: 10px;
     background-color: #EBEEF1;

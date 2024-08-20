@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { analyzeWorkload } from '../api'; // Import the API function
+import Modal from './Modal'; // Import the Modal component
 import '../css/WorkloadAnalyzer.css';
 
-function WorkloadAnalyzer() {
+function WorkloadAnalyzer({ onFileNameChange }) {
     const [selectedFile, setSelectedFile] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -17,28 +19,24 @@ function WorkloadAnalyzer() {
             return;
         }
 
-        // Check if the file is an .sql file
         if (file.name.split('.').pop().toLowerCase() !== 'sql') {
             setSelectedFile(null);
             setErrorMessage("Only .sql files are allowed.");
         } else {
             setSelectedFile(file);
             setErrorMessage('');  // Clear error message when valid file is selected
+            onFileNameChange(file.name); // Pass file name to parent component
         }
     };
 
     const handleAnalyzeClick = async () => {
-        // If no file selected, show an error
         if (!selectedFile) {
             setErrorMessage("You must select a file before analyzing.");
             return;
         }
-        console.log("Selected file :", selectedFile.name);
         setLoading(true);
         try {
-            // Call the function from api.js and pass the selected file
             const response = await analyzeWorkload(selectedFile);
-            console.log("Response:", response.data);
             setData(response.data); // Update state with the fetched data
         } catch (error) {
             console.error("Error analyzing workload:", error);
@@ -48,8 +46,24 @@ function WorkloadAnalyzer() {
         }
     };
 
+    const handleVisualizeClick = () => {
+        setIsModalOpen(true); // Open the modal
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false); // Close the modal
+    };
+
+    const handlePrevGraph = () => {
+        // Logic to show the previous graph
+    };
+
+    const handleNextGraph = () => {
+        // Logic to show the next graph
+    };
+
     return (
-        <div className="workload-analyzer-container">
+        <div className={`workload-analyzer-container ${isModalOpen ? 'blur' : ''}`}>
             <h2>Analyze Workload</h2>
             <div className="button-container">
                 <label className="upload-button">
@@ -60,13 +74,12 @@ function WorkloadAnalyzer() {
                     {loading ? 'Analyzing...' : 'Analyze'}
                 </button>
             </div>
-            {/* Error message */}
             <p className="error-message">{errorMessage || '\u00A0'}</p>
 
             <div className="box">
                 <div className="box-header">
                     <span className="title">Predicate Statistics</span>
-                    <button className="box-button">
+                    <button className="box-button" onClick={handleVisualizeClick}>
                         <div className='visualize-button'>                        
                             <img src={require('../icons/visualize.png')} alt="Visualize" className="box-button-icon" />
                             Visualize
@@ -104,6 +117,13 @@ function WorkloadAnalyzer() {
                     </table>
                 </div>
             </div>
+
+            <Modal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onPrev={handlePrevGraph}
+                onNext={handleNextGraph}
+            />
         </div>
     );
 }

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { analyzeWorkload } from '../api'; // Import the API function
+import { initialSelection } from '../api'; // Import the renamed API function
 import '../css/initialSelection.css';
 
-function InitialSelection() {
+function InitialSelection({ fileName }) {
     const [maxIndexes, setMaxIndexes] = useState(0); // State for max indexes
     const [errorMessage, setErrorMessage] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [checkedIndexes, setCheckedIndexes] = useState([]); // Track checked checkboxes
 
-    const handleAnalyzeClick = async () => {
+    const handleGenerateClick = async () => {
         // If maxIndexes is invalid, show an error
         if (maxIndexes <= 0) {
             setErrorMessage("Please insert a valid maximum number of indexes.");
@@ -18,14 +18,20 @@ function InitialSelection() {
 
         setLoading(true);
         try {
-            // Call the function from api.js (if needed) and process the data
-            // Example: const response = await analyzeWorkload(maxIndexes);
-            // Update data with mock data or actual API response
-            const fetchedData = generateMockData(maxIndexes); // Replace with actual data fetching
-            setData(fetchedData);
+            // Call the API function from api.js
+            console.log("fileName name is:", fileName);
+            const response = await initialSelection(maxIndexes, fileName);
 
-            // Initialize checkedIndexes based on maxIndexes
-            setCheckedIndexes(new Array(fetchedData.length).fill(false).map((_, index) => index < maxIndexes));
+            // Set data from API response
+            setData(response.final_indexes); // Adjust based on your actual API response
+
+            // Initialize checkedIndexes based on the length of the returned data
+            const initialCheckedIndexes = new Array(response.final_indexes.length).fill(false);
+            for (let i = 0; i < Math.min(maxIndexes, response.final_indexes.length); i++) {
+                initialCheckedIndexes[i] = true;
+            }
+            setCheckedIndexes(initialCheckedIndexes);
+            setErrorMessage("");
         } catch (error) {
             console.error("Error generating indexes:", error);
             setErrorMessage("Error generating indexes.");
@@ -57,15 +63,6 @@ function InitialSelection() {
         return checkedIndexes.filter(isChecked => isChecked).length;
     };
 
-    // Mock function to generate data for demonstration purposes
-    const generateMockData = (count) => {
-        return Array.from({ length: 10 }, (_, index) => ({
-            attribute: `Attribute ${index + 1}`,
-            'Where Uses': `Where ${index + 1}`,
-            'Join Uses': `Join ${index + 1}`
-        }));
-    };
-
     return (
         <div className="workload-analyzer-container">
             <h2>Generate initial indexes</h2>
@@ -80,7 +77,7 @@ function InitialSelection() {
                         onChange={handleMaxIndexesChange}
                     />
                 </div>
-                <button className="analyze-button" onClick={handleAnalyzeClick} disabled={loading}>
+                <button className="analyze-button" onClick={handleGenerateClick} disabled={loading}>
                     {loading ? 'Generating...' : 'Generate'}
                 </button>
             </div>
@@ -91,7 +88,7 @@ function InitialSelection() {
                 <div className="box-header">
                     <span className="title">Recommended Indexes</span>
                     <p className="total-indexes">
-                    Total indexes to create: {countCheckedIndexes()}
+                        Total indexes to create: {countCheckedIndexes()}
                     </p>
                 </div>
                 <div className="table-container">
@@ -111,8 +108,8 @@ function InitialSelection() {
                             ) : data.length ? (
                                 data.map((item, index) => (
                                     <tr key={index}>
-                                        <td><div className="row-data">{item['attribute']}</div></td>
-                                        <td><div className="detail where-uses">{item['Where Uses']}</div></td>
+                                        <td><div className="row-data">{item[0] || 'N/A'}</div></td> {/* Adjust based on actual data structure */}
+                                        <td><div className="detail where-uses">{item[1] || 'N/A'}</div></td> {/* Adjust based on actual data structure */}
                                         <td>
                                             <div className="checkbox-container">
                                                 <input

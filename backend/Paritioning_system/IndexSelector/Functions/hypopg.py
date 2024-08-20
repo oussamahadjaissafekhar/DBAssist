@@ -18,12 +18,20 @@ def drop_hypothetical_indexes(connection,hypo_index_oids):
     cursor.close()
 
 # This function creates hypopg index on a given attribute 
-def create_hypothetical_index(connection,index,hypo_index_oids):
+def create_hypothetical_index(connection, index, hypo_index_oids):
+    """
+    Create a hypothetical index using hypopg.
+    """
     cursor = connection.cursor()
-    cursor.execute(sql.SQL("SELECT * FROM hypopg_create_index (%s);"), [index])
-    oid = cursor.fetchone()[0]
-    hypo_index_oids.append(oid)
-    connection.commit()
-    cursor.close()
-    print(f"Created hypothetical index with OID: {oid}")
+    try:
+        cursor.execute(sql.SQL("SELECT * FROM hypopg_create_index (%s);"), [index])
+        oid = cursor.fetchone()[0]
+        hypo_index_oids.append(oid)
+        connection.commit()
+        print(f"Created hypothetical index with OID: {oid}")
+    except Exception as e:
+        connection.rollback()
+        print(f"Error creating hypothetical index: {index}, {e}")
+    finally:
+        cursor.close()
     return hypo_index_oids

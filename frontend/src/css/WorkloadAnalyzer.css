@@ -59,6 +59,7 @@
 .box {
     margin-top: 20px;
     height: 350px;
+    max-width: 880px;
     overflow: hidden;
     border: 1px solid #dee2e6;
     border-radius: 20px;
@@ -151,6 +152,10 @@ table {
 th, td {
     padding: 5px 0px;
     text-align: center;
+}
+
+th {
+    color:rgba(155, 174, 188, 1);
 }
 
 .row-data {

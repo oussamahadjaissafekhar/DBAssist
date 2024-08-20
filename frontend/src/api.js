@@ -25,7 +25,6 @@ export async function disconnectFromDatabase() {
 export const analyzeWorkload = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-
     try {
         const response = await axios.post(`${API_BASE_URL}/analyze-workload`, formData, {
             headers: {
@@ -36,6 +35,35 @@ export const analyzeWorkload = async (file) => {
     } catch (error) {
         console.error("Error analyzing workload:", error);
         throw error;
+    }
+};
+
+// Updated function to accept file name as a second argument
+export const initialSelection = async (maxIndexes, fileName) => {
+    const response = await fetch(`${API_BASE_URL}/initial-selection`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            maxIndexes: maxIndexes,
+            filename: fileName
+        })
+    });
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+};
+
+export const executeQuery = async (query) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/executeQuery`, { query });
+        console.log(response.data)
+        return response.data; // Assuming the response contains columnNames and rowData
+    } catch (error) {
+        console.error("Error executing query:", error);
+        throw error; // Re-throw the error to be handled by the calling function
     }
 };
 

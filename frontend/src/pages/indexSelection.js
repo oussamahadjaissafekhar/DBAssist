@@ -3,11 +3,13 @@ import Pipeline from '../components/indexingPipline';
 import WorkloadAnalyzer from '../components/WorkloadAnalyzer';
 import NavigationButtons from '../components/NavigationButtons';
 import InitialSelection from '../components/initialSelection';
+import AdaptationSelection from '../components/adaptationSelection';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../css/IndexSelection.css'; // Ensure this CSS file includes the animations
 
 function IndexSelection() {
     const [currentStep, setCurrentStep] = useState(0);
+    const [fileName, setFileName] = useState(''); // State to hold the file name
 
     // Function to handle step change
     const handleStepChange = (direction) => {
@@ -19,6 +21,11 @@ function IndexSelection() {
             }
             return prevStep;
         });
+    };
+
+    // Function to update the file name from WorkloadAnalyzer
+    const handleFileNameChange = (name) => {
+        setFileName(name);
     };
 
     return (
@@ -57,7 +64,7 @@ function IndexSelection() {
                                 unmountOnExit
                             >
                                 <div>
-                                    <WorkloadAnalyzer />
+                                    <WorkloadAnalyzer onFileNameChange={handleFileNameChange} />
                                 </div>
                             </CSSTransition>
                         )}
@@ -71,7 +78,7 @@ function IndexSelection() {
                                 unmountOnExit
                             >
                                 <div>
-                                    <InitialSelection/>
+                                    <InitialSelection fileName={fileName} />
                                 </div>
                             </CSSTransition>
                         )}
@@ -84,8 +91,8 @@ function IndexSelection() {
                                 classNames="fade"
                                 unmountOnExit
                             >
-                                <div>
-                                    {/* Your Component for this step */}
+                                 <div>
+                                    <AdaptationSelection/>
                                 </div>
                             </CSSTransition>
                         )}

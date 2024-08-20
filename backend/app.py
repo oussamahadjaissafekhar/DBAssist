@@ -5,10 +5,11 @@ from flask import Flask, request, jsonify
 import psycopg2
 from flask_cors import CORS
 from Paritioning_system.WorkloadAnalyzer.WorkloadAnalyzer import analyzeWorkload
+from Paritioning_system.IndexSelector.InitialSelection import initialSelection
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
-connect = "dbname= user= password="
+connect = "dbname=ssb user=postgres password=postgres"
 
 
 @app.route("/connect", methods=["POST"])
@@ -86,6 +87,76 @@ def analyzeWorkload_backend():
     print("Workload analyses:", workloadAnalyses)
     return jsonify(workload_analyses_dict), 200
 
+
+@app.route("/initial-selection", methods=["POST"])
+def initialSelection_backend():
+    print("initial selection triggered")
+
+    data = request.json  # Parse JSON data from the request body
+    max_indexes = data.get("maxIndexes")
+    filename = data.get("filename")
+
+    # Print or process the data
+    print(f"Max indexes: {max_indexes}")
+    print(f"Filename: {filename}")
+
+    temp_dir = os.path.join(os.getcwd(), 'temp')
+    
+    # Create a safe file path
+    workload_file_path = os.path.join(temp_dir, filename)
+    index_file_path = os.path.join(temp_dir, "index_final_configuration.sql")
+
+    # Call the initialSelection function and get results
+    final_indexes, number_indexes = initialSelection(workload_file_path, connect, index_file_path, max_indexes)
+
+    # Format the results for JSON response
+    response = {
+        'final_indexes': final_indexes,
+        'number_indexes': number_indexes
+    }
+
+    print("response : ",response)
+    # Return JSON response
+    return jsonify(response)
+
+@app.route('/executeQuery', methods=['POST'])
+def execute_query():
+    try:
+        # Extract query from the request
+        query = request.json.get('query')
+        
+        if not query:
+            return jsonify({"error": "No query provided"}), 400
+
+        # Connect to the database
+        conn = psycopg2.connect(connect)
+        cursor = conn.cursor()
+
+        # Execute the query
+        cursor.execute(query)
+
+        # Fetch the field names (column names)
+        num_fields = len(cursor.description)
+        field_names = [i[0] for i in cursor.description]
+
+        # Fetch all rows
+        row_data = cursor.fetchall()
+
+        # Close the cursor and connection
+        cursor.close()
+        conn.close()
+        
+        print("length row_columns",len(field_names))
+        print("length row_data" , len(row_data[0]))
+        # Return the field names and row data as a JSON response
+        return jsonify({
+            "columnNames": field_names,
+            "rowData": row_data
+        }), 200
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return jsonify({"error": "Failed to execute query", "details": str(e)}), 500
 
 @app.route("/partition", methods=["POST"])
 def perform_partitioning():

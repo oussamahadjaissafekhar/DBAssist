@@ -4,9 +4,9 @@ from DataChangeIdentifier.DataChangeIdentifier import analyseLogFile, staticStat
 from WorkloadAnalyzer.WorkloadAnalyzer import analyzeWorkload, analyzeWorkloadStatic
 from PartitioningSchemaGenerator.PartitioningKeySelector import chooseKeys
 from PartitioningSchemaGenerator.PartitioningSchemaGenerator import generatePartitioningSchema
-from IndexSelector.InitialSelection import CimulativeSelection , SeperatedSelection
 from IndexSelector.AdaptationMechanism import AdaptationMechanism
 from IndexSelector.IndexMaintenanace import IndexMainetenance
+from IndexSelector.InitialSelection import initialSelection
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -22,18 +22,17 @@ userTables = []
 updateStats = pd.DataFrame()
 accessStats = pd.DataFrame()
 predicateStats = pd.DataFrame()
-workloadAnalyses = pd.DataFrame()
 outputFile = open('Schema.sql', 'w+')
 
 logFilePath, userTables = initDBMSInfo(connect)
 updateStats = staticStats
 print("database tables : ",userTables)
-predicateStats, accessStats, workloadAnalyses = analyzeWorkload(WorkloadFilePath,connect)
-print("Workload analyses :",workloadAnalyses)
+#predicateStats, accessStats = analyzeWorkload(WorkloadFilePath,connect)
 #chosenAttributeForEachTable = chooseKeys(updateStats, accessStats)
 #generatePartitioningSchema(predicateStats, chosenAttributeForEachTable, outputFile,connect)
 #CimulativeSelection(WorkloadFilePath,connect,IndexFilePath)
 #SeperatedSelection(WorkloadFilePath,connect,IndexFilePath_1)
+initialSelection(WorkloadFilePath,connect,IndexFilePath,IndexFilePath_1,5)
 #df = AdaptationMechanism(connect,IndexFilePath, QueryFilePath)
 #IndexMainetenance(connect , df , userTables)
 print("done")
