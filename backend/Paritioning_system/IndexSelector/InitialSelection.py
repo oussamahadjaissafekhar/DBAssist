@@ -15,7 +15,6 @@ from Paritioning_system.WorkloadAnalyzer.Functions.extractPredicats import gener
 from Paritioning_system.WorkloadAnalyzer.Functions.verifyPredicats import verify_precdicats
 from Paritioning_system.WorkloadAnalyzer.Functions.database.getDatabseInfos import get_database_attributes, get_database_tables
 
-max_indexes = 7
 
 # Function to get the table name based on the attribute and tables
 def get_table_name(attribute, tables):

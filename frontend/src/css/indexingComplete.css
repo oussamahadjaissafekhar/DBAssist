@@ -1,0 +1,22 @@
+.indexing-complete-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.indexing-complete-box {
+    height: 350px; /* Same height as .box */
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indexing-complete-message {
+    font-size: 24px;
+    color: #00113D;
+    font-weight: bold;
+    text-align: center;
+}

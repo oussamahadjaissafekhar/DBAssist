@@ -54,7 +54,7 @@ def analyzeWorkload(path: str,connect)-> Tuple[pd.DataFrame, pd.DataFrame]:
     # Transform the valid expressions and join coniditons into data fram with counting number of occurence
     df_4 = pd.DataFrame()
     df_4 = attribute_joinFrequency_whereFrequency(valid_expressions,join_expressions)
-
+    df_4.to_csv('./temp/dataframe_1.csv',index=False)
     return df_3, df_1, df_4 # return predicateStats, accessStats
 
 

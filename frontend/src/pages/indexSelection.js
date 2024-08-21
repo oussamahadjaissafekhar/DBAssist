@@ -4,15 +4,30 @@ import WorkloadAnalyzer from '../components/WorkloadAnalyzer';
 import NavigationButtons from '../components/NavigationButtons';
 import InitialSelection from '../components/initialSelection';
 import AdaptationSelection from '../components/adaptationSelection';
+import IndexingComplete from '../components/indexingComplete'; // Import the new component
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../css/IndexSelection.css'; // Ensure this CSS file includes the animations
+import { createIndexes } from '../api'; // Import the API function
 
 function IndexSelection() {
     const [currentStep, setCurrentStep] = useState(0);
     const [fileName, setFileName] = useState(''); // State to hold the file name
+    const [checkedIndexes, setCheckedIndexes] = useState([]); // State to hold checked indexes
 
     // Function to handle step change
-    const handleStepChange = (direction) => {
+    const handleStepChange = async (direction) => {
+        if (direction === 'next' && currentStep === 2) {
+            try {
+                // Send the full data structure to the backend
+                await createIndexes(checkedIndexes);
+                // Optionally handle the response data if needed
+                // console.log('Checked indexes sent successfully');
+            } catch (error) {
+                // Optionally handle the error if needed
+                console.error('Failed to send checked indexes');
+            }
+        }
+
         setCurrentStep((prevStep) => {
             if (direction === 'next') {
                 return Math.min(prevStep + 1, 4); // 4 is the total number of steps - 1
@@ -26,6 +41,11 @@ function IndexSelection() {
     // Function to update the file name from WorkloadAnalyzer
     const handleFileNameChange = (name) => {
         setFileName(name);
+    };
+
+    // Function to update checked indexes from InitialSelection
+    const handleCheckedIndexesChange = (indexes) => {
+        setCheckedIndexes(indexes);
     };
 
     return (
@@ -78,7 +98,10 @@ function IndexSelection() {
                                 unmountOnExit
                             >
                                 <div>
-                                    <InitialSelection fileName={fileName} />
+                                    <InitialSelection 
+                                        fileName={fileName} 
+                                        onCheckedIndexesChange={handleCheckedIndexesChange} 
+                                    />
                                 </div>
                             </CSSTransition>
                         )}
@@ -91,8 +114,8 @@ function IndexSelection() {
                                 classNames="fade"
                                 unmountOnExit
                             >
-                                 <div>
-                                    <AdaptationSelection/>
+                                <div>
+                                    <AdaptationSelection checkedIndexes={checkedIndexes} />
                                 </div>
                             </CSSTransition>
                         )}
@@ -106,7 +129,7 @@ function IndexSelection() {
                                 unmountOnExit
                             >
                                 <div>
-                                    {/* Your Component for this step */}
+                                    <IndexingComplete /> {/* Display the completion message */}
                                 </div>
                             </CSSTransition>
                         )}

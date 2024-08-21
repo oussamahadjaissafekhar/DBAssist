@@ -10,6 +10,7 @@ from IndexSelector.InitialSelection import initialSelection
 import warnings
 warnings.filterwarnings("ignore")
 
+max_inndexes = 5
 connect = "dbname=ssb user=postgres password=postgres"
 
 # Global variables 
@@ -18,10 +19,14 @@ WorkloadFilePath = "./WorkloadAnalyzer/Data/standardQueries.sql"
 IndexFilePath = "./selected_indexes_cumulative.sql"
 IndexFilePath_1 = "./selected_indexes_seperated.sql"
 QueryFilePath = "./WorkloadAnalyzer/Data/testQuery.sql"
+IndexUsageMatrix = "./temp/IndexUsageMatrix.csv"
 userTables = []
 updateStats = pd.DataFrame()
 accessStats = pd.DataFrame()
 predicateStats = pd.DataFrame()
+df = pd.DataFrame()
+maintenance_results ={}
+adaptation_results = []
 outputFile = open('Schema.sql', 'w+')
 
 logFilePath, userTables = initDBMSInfo(connect)
@@ -30,9 +35,12 @@ print("database tables : ",userTables)
 #predicateStats, accessStats = analyzeWorkload(WorkloadFilePath,connect)
 #chosenAttributeForEachTable = chooseKeys(updateStats, accessStats)
 #generatePartitioningSchema(predicateStats, chosenAttributeForEachTable, outputFile,connect)
-#CimulativeSelection(WorkloadFilePath,connect,IndexFilePath)
-#SeperatedSelection(WorkloadFilePath,connect,IndexFilePath_1)
-initialSelection(WorkloadFilePath,connect,IndexFilePath,IndexFilePath_1,5)
-#df = AdaptationMechanism(connect,IndexFilePath, QueryFilePath)
-#IndexMainetenance(connect , df , userTables)
+#initialSelection(WorkloadFilePath,connect,IndexFilePath,IndexFilePath_1,5)
+final_indexes, number_indexes = initialSelection(WorkloadFilePath, connect, IndexFilePath, max_inndexes)
+adaptation_results = AdaptationMechanism(connect,IndexFilePath, [''])
+maintenance_results = IndexMainetenance(connect ,max_inndexes)
+final_results = {
+    'adaptation': adaptation_results,
+    'maintenance': maintenance_results
+}
 print("done")

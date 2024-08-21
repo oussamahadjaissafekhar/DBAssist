@@ -6,6 +6,8 @@ import psycopg2
 from flask_cors import CORS
 from Paritioning_system.WorkloadAnalyzer.WorkloadAnalyzer import analyzeWorkload
 from Paritioning_system.IndexSelector.InitialSelection import initialSelection
+from Paritioning_system.IndexSelector.AdaptationMechanism import AdaptationMechanism
+from Paritioning_system.IndexSelector.IndexMaintenanace import IndexMainetenance
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -104,10 +106,11 @@ def initialSelection_backend():
     
     # Create a safe file path
     workload_file_path = os.path.join(temp_dir, filename)
-    index_file_path = os.path.join(temp_dir, "index_final_configuration.sql")
+    index_file_path = os.path.join(temp_dir, "index_initial_selection.sql")
 
     # Call the initialSelection function and get results
     final_indexes, number_indexes = initialSelection(workload_file_path, connect, index_file_path, max_indexes)
+
 
     # Format the results for JSON response
     response = {
@@ -119,12 +122,76 @@ def initialSelection_backend():
     # Return JSON response
     return jsonify(response)
 
+
+@app.route('/checkedIndexes', methods=['POST'])
+def create_indexes():
+    print("Creating indexes started ...")
+    data = request.json
+    print("data :", data)
+    
+    # Extract checked indexes from the JSON data
+    checked_indexes = data.get('checkedIndexes', [])
+    print("checked indexes :", checked_indexes)
+    
+    if not checked_indexes:
+        return jsonify({"error": "No indexes selected"}), 400
+
+    # Create the directory if it does not exist
+    temp_directory = './temp'
+    if not os.path.exists(temp_directory):
+        os.makedirs(temp_directory)
+
+    # Generate the SQL statements
+    sql_statements = []
+    for index in checked_indexes:
+        table_name = index.get('tableName')
+        column_name = index.get('indexColumn')
+        if table_name and column_name:
+            sql_statements.append(f"CREATE INDEX idx_{table_name}_{column_name} ON {table_name} ({column_name});")
+    print("sql statements :", sql_statements)
+    if not sql_statements:
+        return jsonify({"error": "No valid indexes selected"}), 400
+
+    # Write to the SQL file
+    sql_file_path = os.path.join(temp_directory, 'final_index_configuration.sql')
+    with open(sql_file_path, 'w+') as file:
+        file.write('\n'.join(sql_statements))
+
+    # Execute the SQL statements in the database
+    try:
+        # Replace `connect` with your database connection string
+        connection = psycopg2.connect(connect)
+        cursor = connection.cursor()
+        
+        # Execute each SQL statement
+        for statement in sql_statements:
+            cursor.execute(statement)
+        
+        # Commit the transaction
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
+        return jsonify({"message": "Indexes created successfully and SQL file created"}), 200
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred while creating indexes"}), 500
+    
+    
 @app.route('/executeQuery', methods=['POST'])
 def execute_query():
+    df = pd.DataFrame()
+    maintenance_results ={}
+    adaptation_results = []
+    IndexFilePath = "./temp/final_index_configuration.sql"
+    IndexUsageMatrix = "./temp/IndexUsageMatrix.csv"
     try:
         # Extract query from the request
         query = request.json.get('query')
+        maximum_index = request.json.get('maximum_index')
         
+        print("maximum number of indexes : ",maximum_index)
         if not query:
             return jsonify({"error": "No query provided"}), 400
 
@@ -146,12 +213,22 @@ def execute_query():
         cursor.close()
         conn.close()
         
+        # Adaptation 
+        adaptation_results = AdaptationMechanism(connect, IndexFilePath, IndexUsageMatrix, [query])
+        maintenance_results = IndexMainetenance(connect, IndexUsageMatrix, maximum_index)
+        final_results = {
+            'adaptation': adaptation_results,
+            'maintenance': maintenance_results
+        }
+
         print("length row_columns",len(field_names))
         print("length row_data" , len(row_data[0]))
+        print("adaptation steps :", final_results)
         # Return the field names and row data as a JSON response
         return jsonify({
             "columnNames": field_names,
-            "rowData": row_data
+            "rowData": row_data,
+            "adaptationSteps":final_results
         }), 200
 
     except Exception as e:

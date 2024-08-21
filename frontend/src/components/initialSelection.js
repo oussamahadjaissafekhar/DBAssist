@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { initialSelection } from '../api'; // Import the renamed API function
 import '../css/initialSelection.css';
 
-function InitialSelection({ fileName }) {
+function InitialSelection({ fileName, onCheckedIndexesChange }) {
     const [maxIndexes, setMaxIndexes] = useState(0); // State for max indexes
     const [errorMessage, setErrorMessage] = useState('');
     const [data, setData] = useState([]);
@@ -19,11 +19,10 @@ function InitialSelection({ fileName }) {
         setLoading(true);
         try {
             // Call the API function from api.js
-            console.log("fileName name is:", fileName);
             const response = await initialSelection(maxIndexes, fileName);
 
             // Set data from API response
-            setData(response.final_indexes); // Adjust based on your actual API response
+            setData(response.final_indexes);
 
             // Initialize checkedIndexes based on the length of the returned data
             const initialCheckedIndexes = new Array(response.final_indexes.length).fill(false);
@@ -42,23 +41,38 @@ function InitialSelection({ fileName }) {
 
     const handleMaxIndexesChange = (e) => {
         const value = e.target.value;
-        setMaxIndexes(Number(value)); // Update maxIndexes state
+        setMaxIndexes(Number(value));
         if (value <= 0) {
             setErrorMessage("Maximum number of indexes must be a positive number.");
         } else {
-            setErrorMessage(''); // Clear error message if valid input
+            setErrorMessage('');
         }
     };
 
     const handleCheckboxChange = (index) => {
         setCheckedIndexes(prevCheckedIndexes => {
             const newCheckedIndexes = [...prevCheckedIndexes];
-            newCheckedIndexes[index] = !newCheckedIndexes[index]; // Toggle the checkbox state
+            newCheckedIndexes[index] = !newCheckedIndexes[index];
             return newCheckedIndexes;
         });
     };
 
-    // Calculate the number of checked indexes
+    useEffect(() => {
+        const indexesToSend = checkedIndexes
+            .map((isChecked, index) => {
+                if (isChecked) {
+                    return {
+                        tableName: data[index][0],
+                        indexColumn: data[index][1],
+                    };
+                }
+                return null;
+            })
+            .filter(index => index !== null);
+
+        onCheckedIndexesChange(indexesToSend);
+    }, [checkedIndexes, data, onCheckedIndexesChange]);
+
     const countCheckedIndexes = () => {
         return checkedIndexes.filter(isChecked => isChecked).length;
     };
@@ -81,9 +95,7 @@ function InitialSelection({ fileName }) {
                     {loading ? 'Generating...' : 'Generate'}
                 </button>
             </div>
-            {/* Error message */}
             <p className="error-message">{errorMessage || '\u00A0'}</p>
-
             <div className="box">
                 <div className="box-header">
                     <span className="title">Recommended Indexes</span>
@@ -108,8 +120,8 @@ function InitialSelection({ fileName }) {
                             ) : data.length ? (
                                 data.map((item, index) => (
                                     <tr key={index}>
-                                        <td><div className="row-data">{item[0] || 'N/A'}</div></td> {/* Adjust based on actual data structure */}
-                                        <td><div className="detail where-uses">{item[1] || 'N/A'}</div></td> {/* Adjust based on actual data structure */}
+                                        <td><div className="row-data">{item[0] || 'N/A'}</div></td>
+                                        <td><div className="detail where-uses">{item[1] || 'N/A'}</div></td>
                                         <td>
                                             <div className="checkbox-container">
                                                 <input
@@ -124,7 +136,7 @@ function InitialSelection({ fileName }) {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="3"><div className="row-unavailable">No index available</div></td>
+                                    <td colSpan="3"><div className="row-loading">No indexes to display</div></td>
                                 </tr>
                             )}
                         </tbody>

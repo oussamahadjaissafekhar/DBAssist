@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { analyzeWorkload } from '../api'; // Import the API function
-import Modal from './Modal'; // Import the Modal component
+import Modal from './Modal';
 import '../css/WorkloadAnalyzer.css';
 
 function WorkloadAnalyzer({ onFileNameChange }) {
@@ -8,7 +8,7 @@ function WorkloadAnalyzer({ onFileNameChange }) {
     const [errorMessage, setErrorMessage] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -47,23 +47,15 @@ function WorkloadAnalyzer({ onFileNameChange }) {
     };
 
     const handleVisualizeClick = () => {
-        setIsModalOpen(true); // Open the modal
+        setShowModal(true); // Show the modal when the Visualize button is clicked
     };
 
     const handleCloseModal = () => {
-        setIsModalOpen(false); // Close the modal
-    };
-
-    const handlePrevGraph = () => {
-        // Logic to show the previous graph
-    };
-
-    const handleNextGraph = () => {
-        // Logic to show the next graph
+        setShowModal(false); // Close the modal when the close button is clicked
     };
 
     return (
-        <div className={`workload-analyzer-container ${isModalOpen ? 'blur' : ''}`}>
+        <div className="workload-analyzer-container">
             <h2>Analyze Workload</h2>
             <div className="button-container">
                 <label className="upload-button">
@@ -118,12 +110,8 @@ function WorkloadAnalyzer({ onFileNameChange }) {
                 </div>
             </div>
 
-            <Modal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                onPrev={handlePrevGraph}
-                onNext={handleNextGraph}
-            />
+            {showModal && <Modal data={data} onClose={handleCloseModal} />} 
+            {/* Modal will only show if showModal is true */}
         </div>
     );
 }

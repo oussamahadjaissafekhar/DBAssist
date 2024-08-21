@@ -56,9 +56,22 @@ export const initialSelection = async (maxIndexes, fileName) => {
     return response.json();
 };
 
-export const executeQuery = async (query) => {
+// Function to send checked indexes to the backend
+export const createIndexes = async (checkedIndexes) => {
     try {
-        const response = await axios.post(`${API_BASE_URL}/executeQuery`, { query });
+        const response = await axios.post(`${API_BASE_URL}/checkedIndexes`, {
+            checkedIndexes: checkedIndexes
+        });
+        return response.data; // Return response data if needed
+    } catch (error) {
+        console.error('Error sending checked indexes to backend:', error);
+        throw error; // Rethrow error to handle it in the component if needed
+    }
+};
+
+export const executeQuery = async (query,maximum_index) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/executeQuery`, { query,maximum_index });
         console.log(response.data)
         return response.data; // Assuming the response contains columnNames and rowData
     } catch (error) {
