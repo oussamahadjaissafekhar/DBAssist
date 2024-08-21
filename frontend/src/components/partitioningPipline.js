@@ -4,7 +4,7 @@ import '../css/pipeline.css'; // Ensure this file exists for styling
 const steps = ['Start', 'Identify changing attributes', 'Analyze workload', 'Recommended partitioning keys', 'Generate schema', 'Deploy schema', 'End']; // Steps for the pipeline
 
 function Pipeline({ currentStep }) {
-    const containerClass = currentStep === 0 ? 'pipeline-container pipeline-start' : 'pipeline-container pipeline-other';
+    const containerClass = currentStep === 0 ? 'pipeline-container pipeline-start-partitioning' : 'pipeline-container pipeline-other';
     const stepsContainer = currentStep === 0 ? 'pipeline-text' : 'pipeline-text-hide';
     return (
         <div className={containerClass}>

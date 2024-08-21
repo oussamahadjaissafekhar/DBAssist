@@ -1,5 +1,5 @@
 customerDDL = """
-CREATE TABLE customer_partitioned
+CREATE TABLE customer
 (
     c_custkey integer NOT NULL,
     c_name character varying(25) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE customer_partitioned
 """
 
 datesDDL = """
-CREATE TABLE dates_partitioned
+CREATE TABLE dates
 (
     d_datekey integer NOT NULL,
     d_date character(19) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE dates_partitioned
 """
 
 supplierDDL = """
-CREATE TABLE supplier_partitioned
+CREATE TABLE supplier
 (
     s_suppkey integer NOT NULL,
     s_name character(25) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE supplier_partitioned
 """
 
 partDDL = """
-CREATE TABLE part_partitioned
+CREATE TABLE part
 (
     p_partkey integer NOT NULL,
     p_name character varying(50) NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE part_partitioned
 """
 
 lineorderDDL = """
-CREATE TABLE lineorder_partitioned
+CREATE TABLE lineorder
 (
     lo_orderkey integer,
     lo_linenumber integer,
@@ -92,3 +92,13 @@ CREATE TABLE lineorder_partitioned
 
 
 tableDDLs = {'customer': customerDDL, 'dates': datesDDL, 'supplier': supplierDDL, 'part': partDDL, 'lineorder': lineorderDDL}
+
+customerColumns = "(c_custkey, c_name, c_address, c_city, c_nation, c_region, c_phone, c_mktsegment, supp) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+datesColumns = "(d_datekey, d_date, d_dayofweek, d_month, d_year, d_yearmonthnum, d_yearmonth, d_daynuminweek, d_daynuminmonth, d_daynuminyear, d_monthnuminyear, d_weeknuminyear, d_sellingseason, d_lastdayinweekfl, d_lastdayinmonthfl, d_holidayfl, d_weekdayfl, supp) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+supplierColumns = "(s_suppkey, s_name, s_address, s_city, s_nation, s_region, s_phone, supp) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+partColumns = "(p_partkey, p_name, p_mfgr, p_category, p_brand, p_color, p_type, p_size, p_container, supp) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+lineorderColumns = "(lo_orderkey, lo_linenumber, lo_custkey, lo_partkey, lo_suppkey, lo_orderdate, lo_orderpriority, lo_shippriority, lo_quantity, lo_extendedprice, lo_ordtotalprice, lo_discount, lo_revenue, lo_supplycost, lo_tax, lo_commitdate, lo_shipmode) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
+tableColumns = {'customer': customerColumns, 'dates': datesColumns, 'supplier': supplierColumns, 'part': partColumns, 'lineorder': lineorderColumns}
+
+partitioningThreshold = {'customer': 100, 'dates': 100, 'supplier': 150, 'part': 150, 'lineorder': 200}
