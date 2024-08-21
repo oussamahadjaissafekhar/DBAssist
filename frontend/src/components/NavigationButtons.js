@@ -10,8 +10,8 @@ function NavigationButtons({ currentStep, handleStepChange , numbersteps}) {
                     Previous
                 </button>
             )}
-            {currentStep < numbersteps && currentStep > 0 && (
-                <button className='next-button' onClick={() => handleStepChange('next')}>
+            {currentStep > 0 && (
+                <button className='next-button' onClick={() => handleStepChange('next')} disabled={!(currentStep < numbersteps)}>
                     Next
                 </button>
             )}

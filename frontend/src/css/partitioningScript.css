@@ -1,0 +1,75 @@
+.script-box {
+    margin-top: 20px;
+    height: 350px;
+    width: 65%;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.generate-button {
+    padding: 10px 40px;
+    background-color: #86E7C4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-family: 'Trispace', sans-serif;
+    font-weight: bold;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+textarea {
+    padding: 1% 2%;
+    width: 90%;
+    height: 90%;
+    border: none;
+    margin-top: 1%;
+    font-family: 'Trispace', sans-serif;
+    overflow-y: auto;
+}
+.inputDiv{
+    display: inline;
+}
+.inputDiv input {
+    margin: 1% 0 0 1%;
+    padding: 10px;
+    width: 300px;
+    height: 30px;
+    border: 1px solid #000000;
+    background: #EFEFEF;
+    border-radius: 10px; 
+    font-family: 'Trispace', sans-serif;
+}
+
+.box-create-button {
+    margin: 2% 0 0 2%;
+    background-color: rgba(68, 154, 255, 0.5);
+    color: #00113D;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 25%;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Trispace', sans-serif;
+    font-weight: bold;
+    display: inline;
+}
+
+.box-create-button:hover{
+    background-color: rgba(0, 96, 205, 0.5);
+}
+
+.create-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+}

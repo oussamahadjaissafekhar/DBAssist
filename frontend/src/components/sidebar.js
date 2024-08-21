@@ -154,6 +154,7 @@ const aboutButtonStyle = {
     alignItems: 'center',
     justifyContent: 'center',
     transition: 'all 0.3s ease', // Smooth transition for hover effect
+    fontFamily: "'Trispace', sans-serif"
 };
 
 const disconnectButtonStyle = {
@@ -168,6 +169,7 @@ const disconnectButtonStyle = {
     alignItems: 'center',
     justifyContent: 'center',
     transition: 'all 0.3s ease', // Smooth transition for hover effect
+    fontFamily: "'Trispace', sans-serif"
 };
 
 const iconPlaceholder = {

@@ -1,0 +1,32 @@
+.migrate-button{
+    padding: 10px 40px;
+    background-color: #86E7C4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-family: 'Trispace', sans-serif;
+    font-weight: bold;
+    margin: 15% 15%
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    border: solid;
+    border-radius: 12px;
+}
+
+.progress {
+    height: 20px;
+    background-color: #4caf50;
+    border-radius: 10px;
+}
+
+.migration-popup{
+    width: 70%;
+    position: fixed;
+    top: 65%;
+    left: 22%;
+}

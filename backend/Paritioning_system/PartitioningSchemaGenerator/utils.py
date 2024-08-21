@@ -1,10 +1,11 @@
-from PartitioningSchemaGenerator.semiClosedInterval import *
+from Paritioning_system.PartitioningSchemaGenerator.semiClosedInterval import *
 from typing import List
 import pandas as pd
 import sqlparse
-from sqlparse.sql import Parenthesis, IdentifierList, Identifier
+from sqlparse.sql import Parenthesis, IdentifierList
 from sqlparse.tokens import Whitespace, Punctuation
 
+# functions for building intervals
 def nextValue(value, attributeType , distinctValues): 
     value = int(value) if attributeType == "int" else value
     try: 
@@ -37,7 +38,15 @@ def valueOrMaximum(value, maximum):
     
     return upperBound
 
+def INPredicateToEqualities(INPredicate: str, attributeType: str, attribute: str)-> List[str]:
+    equalityPredicates = []
+    values = extractValuesFromINPredicate(INPredicate, attributeType)
+    for value in values:
+        equality = attribute + " = " + str(value)
+        equalityPredicates.append(equality)
+    return equalityPredicates
 
+#functions for manipulating intervals 
 def findIntersectingIntervals(interval: SemiClosedInterval, rest: List[SemiClosedInterval])-> List[SemiClosedInterval]:
 
     intersectingIntervals =[]
@@ -87,7 +96,44 @@ def isAccessedRanges(partition: SemiClosedInterval, predicate: str, attributePre
     predicateInterval = SemiClosedInterval(lowerBound, upperBound)
     return predicateInterval.intersects(partition)
 
-def extractValuesFromINPredicate(predicate: str, attributeType: str) ->List[str]:
+
+#functions for manipulating individual value ensembles
+def isAccessedLists(partition: List, predicate: str, attributeType: str, attributePredicateStats: pd.DataFrame)-> bool:
+    predicateAccessedValuesAsString = str(attributePredicateStats.loc[attributePredicateStats["Predicate"]== predicate, "AccessedValues"].values[0])
+    predicateAccessedValues = predicateAccessedValuesAsString.split("+")
+    if attributeType == "int":
+        predicateAccessedValues = [int(value) for value in predicateAccessedValues]
+    return bool(set(partition) & set(predicateAccessedValues))
+
+def findIntersectingEnsembles(first : List, rest: List[List])->List[List]:
+    intersectingEnsembles = []
+    for e in rest:
+        if bool(set(first) & set(e)):
+            intersectingEnsembles.append(e)
+    
+    return intersectingEnsembles
+
+def extractNonIntersectingEnsembles(first: List, second: List)->List[List]:
+    result = []
+
+    firstSet = set(first)
+    secondSet = set(second)
+    intersectionSet = firstSet & secondSet
+
+    firstRemainder = sorted(list(firstSet-intersectionSet))
+    secondRemainder = sorted(list(secondSet-intersectionSet))
+    intersection = sorted(list(intersectionSet))
+
+    if len(firstRemainder) > 0:
+        result.append(firstRemainder)
+    if len(secondRemainder) > 0:
+        result.append(secondRemainder)
+    if len(intersection) > 0:
+        result.append(intersection)
+
+    return result
+    
+def extractValuesFromINPredicate(predicate: str, attributeType: str, distinctValues: List) ->List[str]:
     # we take only the token that contains the list of values
     tokens = sqlparse.parse(predicate)[0].tokens
     parethesis = [token for token in tokens if isinstance(token, Parenthesis)][0]
@@ -102,19 +148,11 @@ def extractValuesFromINPredicate(predicate: str, attributeType: str) ->List[str]
     # removing quotes if attribute is int    
     if attributeType == "int":
         values = [value.strip("'") for value in values]
-    return values
-
-def isAccessedLists(partition: List, predicate: str, attributeType: str, attributePredicateStats: pd.DataFrame)-> bool:
-    predicateAccessedValuesAsString = str(attributePredicateStats.loc[attributePredicateStats["Predicate"]== predicate, "AccessedValues"].values[0])
-    predicateAccessedValues = predicateAccessedValuesAsString.split("+")
+        
+    # removing values that aren't in the distinctValues list
     if attributeType == "int":
-        predicateAccessedValues = [int(value) for value in predicateAccessedValues]
-    return bool(set(partition) & set(predicateAccessedValues))
-
-def INPredicateToEqualities(INPredicate: str, attributeType: str, attribute: str)-> List[str]:
-    equalityPredicates = []
-    values = extractValuesFromINPredicate(INPredicate, attributeType)
-    for value in values:
-        equality = attribute + " = " + str(value)
-        equalityPredicates.append(equality)
-    return equalityPredicates
+        values = [value for value in values if value in distinctValues]
+    else:
+        values = [value for value in values if value.strip("'") in distinctValues]
+    
+    return values    

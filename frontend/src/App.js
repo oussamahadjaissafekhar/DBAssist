@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Connect from './pages/connect';
 import Partitioning from './pages/partitioning'; // Correct spelling of 'partitioning'
@@ -9,6 +9,7 @@ import './App.css'
 
 function App() {
     const location = useLocation();
+    const [dbName, setDbName] = useState("Define DB name")
 
     // Hide Sidebar on the Connect page
     const shouldShowSidebar = location.pathname !== '/';
@@ -19,7 +20,7 @@ function App() {
             <div style={{ flex: 1, marginLeft: shouldShowSidebar ? '250px' : '0' }}>
                 <Routes>
                     <Route path="/" element={<Connect onConnect={handleConnect} />} />
-                    <Route path="/partition" element={<Partitioning />} />
+                    <Route path="/partition" element={<Partitioning dbName= {dbName} />} />
                     <Route path="/index" element={<IndexSelection />} />
                     {/* Add more routes as needed */}
                 </Routes>

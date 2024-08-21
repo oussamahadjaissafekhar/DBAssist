@@ -35,7 +35,7 @@ def analyseLogFile(logFilePath, userTables) -> pd.DataFrame:
 
     attributeUpdateStats = pd.DataFrame(columns=['Table', 'Attribute', 'NumberOfUpdates'])
 
-    path = './logs/log.txt'
+    path = logFilePath
     count = 0
 
     # Pattern to identify lines that contain data change statements
