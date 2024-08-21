@@ -127,6 +127,7 @@ def adaptive_query_execution(conn, query, low_threshold, high_threshold, valid_e
         "new_cost": None
     }
 
+    print("The initial cost is : ",initial_cost)
     best_cost, best_index, all_tested_indexes = try_hypothetical_indexes(cursor, query, valid_expressions, join_expressions, df, database_tables)
     result_info["best_index"] = best_index
     result_info["possible_indexes"] = list(all_tested_indexes)  # Convert set to list
@@ -137,7 +138,7 @@ def adaptive_query_execution(conn, query, low_threshold, high_threshold, valid_e
         for index in best_index:
             table = index.split("(")[0]
             attribute = index.split("(")[1].replace(")", "")
-            print("Query:", f"CREATE INDEX {table}_{attribute} ON {index}")
+            print("Query:", f"CREATE INDEX idx_{table}_{attribute} ON {index}")
             cursor.execute(f"CREATE INDEX idx_{table}_{attribute} ON {index}")
             conn.commit()
             new_index = pd.DataFrame({'Index': [attribute], 'LFU': [1], 'LRU': [time.time()]})
@@ -179,9 +180,10 @@ def query_analyzer(df, connection, database_attributes, database_tables, query):
     return df, result_info
 
 # This function represents the main of the adaptation mechanism
-def AdaptationMechanism(connect, IndexFilePath, IndexUsageMatrix, queries):
+def AdaptationMechanism(connect, IndexUsageMatrix, queries):
     print("Some new queries arrived and need to be analyzed ...")
     
+    # Connect to the database
     connection = psycopg2.connect(connect)
 
     valid_expressions = []
@@ -193,19 +195,7 @@ def AdaptationMechanism(connect, IndexFilePath, IndexUsageMatrix, queries):
     # Connect to the database and retrieve all the tables
     database_tables = get_database_tables(connect)
 
-    if os.path.exists(IndexUsageMatrix):
-        df = pd.read_csv(IndexUsageMatrix)
-    else:
-        df = pd.DataFrame()  # Create an empty DataFrame
-
-    # Check if the DataFrame is empty
-    if df.empty:
-        print("The DataFrame is empty. Initializing...")
-        df = initialise_matrix(IndexFilePath)
-    else:
-        print("DataFrame loaded successfully.")
-    
-    #queries = read_queries_from_file(QueryFilePath)
+    df = pd.read_csv(IndexUsageMatrix)
     
     results = []
     for query in queries:

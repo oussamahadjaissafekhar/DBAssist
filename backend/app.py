@@ -8,6 +8,7 @@ from Paritioning_system.WorkloadAnalyzer.WorkloadAnalyzer import analyzeWorkload
 from Paritioning_system.IndexSelector.InitialSelection import initialSelection
 from Paritioning_system.IndexSelector.AdaptationMechanism import AdaptationMechanism
 from Paritioning_system.IndexSelector.IndexMaintenanace import IndexMainetenance
+from Paritioning_system.IndexSelector.AdaptationMechanism import initialise_matrix
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -157,6 +158,11 @@ def create_indexes():
     with open(sql_file_path, 'w+') as file:
         file.write('\n'.join(sql_statements))
 
+    IndexUsageMatrix = "./temp/IndexUsageMatrix.csv"
+    IndexFilePath = "./temp/final_index_configuration.sql"
+    print("The DataFrame is empty. Initializing...")
+    df = initialise_matrix(IndexFilePath)
+    df.to_csv(IndexUsageMatrix, index=False)
     # Execute the SQL statements in the database
     try:
         # Replace `connect` with your database connection string
@@ -184,7 +190,6 @@ def execute_query():
     df = pd.DataFrame()
     maintenance_results ={}
     adaptation_results = []
-    IndexFilePath = "./temp/final_index_configuration.sql"
     IndexUsageMatrix = "./temp/IndexUsageMatrix.csv"
     try:
         # Extract query from the request
@@ -214,7 +219,7 @@ def execute_query():
         conn.close()
         
         # Adaptation 
-        adaptation_results = AdaptationMechanism(connect, IndexFilePath, IndexUsageMatrix, [query])
+        adaptation_results = AdaptationMechanism(connect, IndexUsageMatrix, [query])
         maintenance_results = IndexMainetenance(connect, IndexUsageMatrix, maximum_index)
         final_results = {
             'adaptation': adaptation_results,

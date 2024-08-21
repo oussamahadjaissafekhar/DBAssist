@@ -37,7 +37,7 @@ print("database tables : ",userTables)
 #generatePartitioningSchema(predicateStats, chosenAttributeForEachTable, outputFile,connect)
 #initialSelection(WorkloadFilePath,connect,IndexFilePath,IndexFilePath_1,5)
 final_indexes, number_indexes = initialSelection(WorkloadFilePath, connect, IndexFilePath, max_inndexes)
-adaptation_results = AdaptationMechanism(connect,IndexFilePath, [''])
+adaptation_results = AdaptationMechanism(connect, [''])
 maintenance_results = IndexMainetenance(connect ,max_inndexes)
 final_results = {
     'adaptation': adaptation_results,

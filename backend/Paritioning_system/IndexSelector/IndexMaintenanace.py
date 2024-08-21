@@ -80,8 +80,9 @@ def IndexMainetenance(connect, IndexUsageMatrix,maximum_index):
     print("The index maintenance is starting ...")
     connection = psycopg2.connect(connect)
     all_results = []
-    if os.path.exists(IndexUsageMatrix):
-        df = pd.read_csv(IndexUsageMatrix)
+
+    df = pd.read_csv(IndexUsageMatrix)
+    
     # Connect to the database and retrieve all the tables
     database_tables = get_database_tables(connect)
     while len(df) > maximum_index:

@@ -1,7 +1,10 @@
-CREATE INDEX lineorder_lo_custkey ON lineorder(lo_custkey); Cumulative Cost: 36813648.56
-CREATE INDEX customer_c_custkey ON customer(c_custkey); Cumulative Cost: 36813648.56
-CREATE INDEX lineorder_lo_orderdate ON lineorder(lo_orderdate); Cumulative Cost: 36813046.56
-CREATE INDEX dates_d_datekey ON dates(d_datekey); Cumulative Cost: 36813046.56
-CREATE INDEX lineorder_lo_partkey ON lineorder(lo_partkey); Cumulative Cost: 36813046.18000001
-CREATE INDEX part_p_partkey ON part(p_partkey); Cumulative Cost: 36813046.18000001
-CREATE INDEX part_p_category ON part(p_category); Cumulative Cost: 36813045.81
+CREATE INDEX lineorder_lo_custkey ON lineorder(lo_custkey); Cumulative Cost: 49343640.190000005
+CREATE INDEX customer_c_custkey ON customer(c_custkey); Cumulative Cost: 49343640.190000005
+CREATE INDEX lineorder_lo_suppkey ON lineorder(lo_suppkey); Cumulative Cost: 37149772.620000005
+CREATE INDEX supplier_s_suppkey ON supplier(s_suppkey); Cumulative Cost: 37149772.620000005
+CREATE INDEX lineorder_lo_partkey ON lineorder(lo_partkey); Cumulative Cost: 37029742.1
+CREATE INDEX part_p_partkey ON part(p_partkey); Cumulative Cost: 37029742.1
+CREATE INDEX part_p_category ON part(p_category); Cumulative Cost: 36996442.65
+CREATE INDEX lineorder_lo_orderdate ON lineorder(lo_orderdate); Cumulative Cost: 36995840.65
+CREATE INDEX dates_d_datekey ON dates(d_datekey); Cumulative Cost: 36995840.65
+CREATE INDEX dates_d_year ON dates(d_year); Cumulative Cost: 36995787.53000001
