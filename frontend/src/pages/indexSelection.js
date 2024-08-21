@@ -13,10 +13,13 @@ function IndexSelection() {
     const [currentStep, setCurrentStep] = useState(0);
     const [fileName, setFileName] = useState(''); // State to hold the file name
     const [checkedIndexes, setCheckedIndexes] = useState([]); // State to hold checked indexes
+    const [isLoading, setIsLoading] = useState(false); // State to handle loading state
 
     // Function to handle step change
     const handleStepChange = async (direction) => {
         if (direction === 'next' && currentStep === 2) {
+            setIsLoading(true); // Show loading overlay
+
             try {
                 // Send the full data structure to the backend
                 await createIndexes(checkedIndexes);
@@ -25,6 +28,8 @@ function IndexSelection() {
             } catch (error) {
                 // Optionally handle the error if needed
                 console.error('Failed to send checked indexes');
+            } finally {
+                setIsLoading(false); // Hide loading overlay
             }
         }
 
@@ -49,7 +54,7 @@ function IndexSelection() {
     };
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', position: 'relative' }}>
             <Pipeline currentStep={currentStep} />
             <div className="components-container">
                 <TransitionGroup>
@@ -138,6 +143,15 @@ function IndexSelection() {
                 </TransitionGroup>
             </div>
             <NavigationButtons currentStep={currentStep} numbersteps={4} handleStepChange={handleStepChange} />
+
+            {/* Loading Overlay */}
+            {isLoading && (
+                <div className="loading-overlay">
+                    <div className="loading-message">
+                        Creating indexes...
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

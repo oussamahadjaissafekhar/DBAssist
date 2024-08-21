@@ -21,7 +21,6 @@ function Modal({ data, onClose }) {
 
     const charts = [
         <BarChart data={data} key="bar" />,
-        <DoughnutChart data={data} key="doughnut" />,
         <StackedBarChart data={data} key="stacked-bar" />
     ];
 
