@@ -51,92 +51,92 @@ function IndexSelection() {
     return (
         <div style={{ textAlign: 'center' }}>
             <Pipeline currentStep={currentStep} />
-            
-            <TransitionGroup>
-                <CSSTransition
-                    key={currentStep}
-                    timeout={300}
-                    classNames="fade"
-                >
-                    <div>
-                        {/* Step 0: Start indexing */}
-                        {currentStep === 0 && (
-                            <CSSTransition
-                                in={currentStep === 0}
-                                timeout={300}
-                                classNames="fade"
-                                unmountOnExit
-                            >
-                                <div className='start-button-div'>
-                                    <button className='start-button' onClick={() => handleStepChange('next')}>
-                                        Start indexing
-                                    </button>
-                                </div>
-                            </CSSTransition>
-                        )}
-                        
-                        {/* Step 1: Analyze workload */}
-                        {currentStep === 1 && (
-                            <CSSTransition
-                                in={currentStep === 1}
-                                timeout={300}
-                                classNames="fade"
-                                unmountOnExit
-                            >
-                                <div>
-                                    <WorkloadAnalyzer onFileNameChange={handleFileNameChange} />
-                                </div>
-                            </CSSTransition>
-                        )}
+            <div className="components-container">
+                <TransitionGroup>
+                    <CSSTransition
+                        key={currentStep}
+                        timeout={300}
+                        classNames="fade"
+                    >
+                        <div>
+                            {/* Step 0: Start indexing */}
+                            {currentStep === 0 && (
+                                <CSSTransition
+                                    in={currentStep === 0}
+                                    timeout={300}
+                                    classNames="fade"
+                                    unmountOnExit
+                                >
+                                    <div className='start-button-div'>
+                                        <button className='start-button' onClick={() => handleStepChange('next')}>
+                                            Start indexing
+                                        </button>
+                                    </div>
+                                </CSSTransition>
+                            )}
+                            
+                            {/* Step 1: Analyze workload */}
+                            {currentStep === 1 && (
+                                <CSSTransition
+                                    in={currentStep === 1}
+                                    timeout={300}
+                                    classNames="fade"
+                                    unmountOnExit
+                                >
+                                    <div>
+                                        <WorkloadAnalyzer onFileNameChange={handleFileNameChange} />
+                                    </div>
+                                </CSSTransition>
+                            )}
 
-                        {/* Step 2: Choose initial indexes */}
-                        {currentStep === 2 && (
-                            <CSSTransition
-                                in={currentStep === 2}
-                                timeout={300}
-                                classNames="fade"
-                                unmountOnExit
-                            >
-                                <div>
-                                    <InitialSelection 
-                                        fileName={fileName} 
-                                        onCheckedIndexesChange={handleCheckedIndexesChange} 
-                                    />
-                                </div>
-                            </CSSTransition>
-                        )}
+                            {/* Step 2: Choose initial indexes */}
+                            {currentStep === 2 && (
+                                <CSSTransition
+                                    in={currentStep === 2}
+                                    timeout={300}
+                                    classNames="fade"
+                                    unmountOnExit
+                                >
+                                    <div>
+                                        <InitialSelection 
+                                            fileName={fileName} 
+                                            onCheckedIndexesChange={handleCheckedIndexesChange} 
+                                        />
+                                    </div>
+                                </CSSTransition>
+                            )}
 
-                        {/* Step 3: Execute queries */}
-                        {currentStep === 3 && (
-                            <CSSTransition
-                                in={currentStep === 3}
-                                timeout={300}
-                                classNames="fade"
-                                unmountOnExit
-                            >
-                                <div>
-                                    <AdaptationSelection checkedIndexes={checkedIndexes} />
-                                </div>
-                            </CSSTransition>
-                        )}
+                            {/* Step 3: Execute queries */}
+                            {currentStep === 3 && (
+                                <CSSTransition
+                                    in={currentStep === 3}
+                                    timeout={300}
+                                    classNames="fade"
+                                    unmountOnExit
+                                >
+                                    <div>
+                                        <AdaptationSelection checkedIndexes={checkedIndexes} />
+                                    </div>
+                                </CSSTransition>
+                            )}
 
-                        {/* Step 4: End */}
-                        {currentStep === 4 && (
-                            <CSSTransition
-                                in={currentStep === 4}
-                                timeout={300}
-                                classNames="fade"
-                                unmountOnExit
-                            >
-                                <div>
-                                    <IndexingComplete /> {/* Display the completion message */}
-                                </div>
-                            </CSSTransition>
-                        )}
-                    </div>
-                </CSSTransition>
-            </TransitionGroup>
-
+                            {/* Step 4: End */}
+                            {currentStep === 4 && (
+                                <CSSTransition
+                                    in={currentStep === 4}
+                                    timeout={300}
+                                    classNames="fade"
+                                    unmountOnExit
+                                >
+                                    <div>
+                                        <IndexingComplete /> {/* Display the completion message */}
+                                    </div>
+                                </CSSTransition>
+                            )}
+                        </div>
+                    </CSSTransition>
+                </TransitionGroup>
+            </div>
             <NavigationButtons currentStep={currentStep} numbersteps={4} handleStepChange={handleStepChange} />
         </div>
     );

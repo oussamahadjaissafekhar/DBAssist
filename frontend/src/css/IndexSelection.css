@@ -20,3 +20,9 @@
 .start-button-div {
     transition: opacity 300ms ease-in-out;
 }
+
+.components-container {
+    width: 900px;
+    height: 550px;
+    margin: 0 auto;
+}

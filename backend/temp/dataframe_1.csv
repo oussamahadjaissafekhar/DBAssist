@@ -1,12 +1,12 @@
 attribute,Where Uses,Join Uses
-lo_suppkey,0,4
-c_region,1,0
+p_category,1,0
 d_datekey,1,4
+c_region,1,0
+lo_suppkey,0,4
 s_suppkey,0,4
+lo_custkey,0,5
+p_partkey,0,4
 lo_orderdate,0,4
 c_custkey,0,5
 d_year,3,0
-p_partkey,0,4
-p_category,1,0
-lo_custkey,0,5
 lo_partkey,0,4

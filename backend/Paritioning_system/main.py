@@ -10,7 +10,7 @@ from IndexSelector.InitialSelection import initialSelection
 import warnings
 warnings.filterwarnings("ignore")
 
-max_inndexes = 5
+max_indexes = 5
 connect = "dbname=ssb user=postgres password=postgres"
 
 # Global variables 
@@ -36,9 +36,9 @@ print("database tables : ",userTables)
 #chosenAttributeForEachTable = chooseKeys(updateStats, accessStats)
 #generatePartitioningSchema(predicateStats, chosenAttributeForEachTable, outputFile,connect)
 #initialSelection(WorkloadFilePath,connect,IndexFilePath,IndexFilePath_1,5)
-final_indexes, number_indexes = initialSelection(WorkloadFilePath, connect, IndexFilePath, max_inndexes)
+final_indexes, number_indexes = initialSelection(WorkloadFilePath, connect, IndexFilePath, max_indexes)
 adaptation_results = AdaptationMechanism(connect, [''])
-maintenance_results = IndexMainetenance(connect ,max_inndexes)
+maintenance_results = IndexMainetenance(connect ,max_indexes)
 final_results = {
     'adaptation': adaptation_results,
     'maintenance': maintenance_results

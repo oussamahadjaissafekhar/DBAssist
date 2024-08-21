@@ -108,7 +108,7 @@ def analyzeLogs(connect: str):
     print("entered route method")
     print(connect)
     logFilePath, userTables = initDBMSInfo(connect)
-    updateStats = analyseLogFile("C:\\Users\\Youcef Islam\\Documents\\Dev\\DBAssist\\backend\\Paritioning_system\\logs\\log.txt", userTables)
+    updateStats = analyseLogFile("./Paritioning_system/logs/log.txt", userTables)
     return updateStats
     
 def analyzeWorkload_partitioning(file, connect):
