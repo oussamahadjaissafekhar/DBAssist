@@ -49,7 +49,7 @@ function KeyChoice() {
     return (
         <>
             <div className="key-container">
-                <LoadingOverlay isLoading={partitioningGenerationInProgress} />
+                <LoadingOverlay isLoading={partitioningGenerationInProgress} message={"Generating partitioning schema"}/>
                 <button className="reveal-key-button" onClick={handleRevealClick} disabled={loading}>
                     Reveal partitioning keys
                 </button>

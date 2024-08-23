@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { DbContext } from '../DbContext';
 import Pipeline from '../components/partitioningPipline';
 import NavigationButtons from '../components/NavigationButtons';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -14,7 +15,7 @@ import Schema from '../components/partitioning/schema';
 import PartitioningScript from '../components/partitioning/partitioningScript';
 import DataMigration from '../components/partitioning/dataMigration';
 
-function Partitioning(props) {
+function Partitioning() {
     // the state variables for the different steps
     const [currentStep, setCurrentStep] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -22,6 +23,8 @@ function Partitioning(props) {
     const [edges, setEdges] = useState([])
     const [isPopupVisible, setPopupVisible] = useState(false)   //pop up for db info
     const [dataChangeStats, setDataChangeStats] = useState(null)
+
+    const { dbName } = useContext(DbContext);
     
     // Function to handle step change
     const handleStepChange = (direction) => {
@@ -76,7 +79,7 @@ function Partitioning(props) {
                 >
                     <div>
                         {/*the loading overlay is applicable for all steps*/}
-                        <LoadingOverlay isLoading={loading} />
+                        <LoadingOverlay isLoading={loading} message={"Analyzing logs"}/>
                         {/* Step 0: DB info */}
                         {currentStep === 0 && (
                             <CSSTransition
@@ -87,7 +90,7 @@ function Partitioning(props) {
                             >
                                 <>
                                 <div className="header-container" onClick={handleDBinfoClick}>
-                                    <h2>Current database: {props.dbName}</h2>
+                                    <h2>Current database: {dbName}</h2>
                                     <img src={require('../icons/info.png')} alt="info" className="box-button-icon" />
                                 </div>
                                 <CurrentDBInfo isVisible={isPopupVisible} onClose={closePopup} nodes= {nodes} edges = {edges} />

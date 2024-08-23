@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { DbContext } from '../DbContext';
 import Pipeline from '../components/indexingPipline';
 import WorkloadAnalyzer from '../components/WorkloadAnalyzer';
 import NavigationButtons from '../components/NavigationButtons';
@@ -14,6 +15,8 @@ function IndexSelection() {
     const [fileName, setFileName] = useState(''); // State to hold the file name
     const [checkedIndexes, setCheckedIndexes] = useState([]); // State to hold checked indexes
     const [isLoading, setIsLoading] = useState(false); // State to handle loading state
+
+    const { dbName } = useContext(DbContext);
 
     // Function to handle step change
     const handleStepChange = async (direction) => {
@@ -55,6 +58,7 @@ function IndexSelection() {
 
     return (
         <div style={{ textAlign: 'center', position: 'relative' }}>
+            {currentStep== 0 && <div style={{ position: 'relative', top: '10%', left: '0%', marginTop: '5%' }}><h2>Current database: {dbName}</h2></div>}
             <Pipeline currentStep={currentStep} />
             <div className="components-container">
                 <TransitionGroup>

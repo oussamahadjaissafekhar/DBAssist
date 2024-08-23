@@ -1,7 +1,8 @@
 // src/pages/connect.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { connectToDatabase } from '../api';
 import { useNavigate } from 'react-router-dom';
+import { DbContext } from '../DbContext';
 
 function Connect({ onConnect }) {
     const [dbname, setDbname] = useState('');
@@ -9,6 +10,7 @@ function Connect({ onConnect }) {
     const [password, setPassword] = useState('');
     const [notification, setNotification] = useState('');
     const navigate = useNavigate(); // Hook for navigation
+    const { setDbName } = useContext(DbContext);
 
     const handleConnect = async () => {
         const credentials = { dbname, user, password };
@@ -16,15 +18,17 @@ function Connect({ onConnect }) {
             console.log("credentials : ", credentials);
             const response = await connectToDatabase(credentials);
             setNotification('Connected successfully!');
+            setDbName(dbname);
 
             // Show the notification for a short time, then navigate
             setTimeout(() => {
-                navigate('/partition', { replace: true }); // Use replace to navigate
-            }, 3000); // Delay for 3 seconds
+                navigate('/partition', {replace: true });
+            }, 3000);
 
             onConnect(response);
         } catch (error) {
             setNotification('Failed to connect. Please check your credentials.');
+            console.log(error)
         }
 
         // Hide the notification after 3 seconds if it's not successful

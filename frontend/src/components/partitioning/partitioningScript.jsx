@@ -8,10 +8,12 @@ function PartitioningScript() {
     const [sql, setSql] = useState("");
     const [dbName, setDbName] = useState("");
     const [loading, setLoading] = useState(false);
+    const [loadingMessage, setLoadingMessage] = useState("");
     const [notification, setNotification] = useState('');
 
     const handleGenerateClick = async () => {
         setLoading(true);
+        setLoadingMessage("Generating SQL script")
         try {
             const script = await getSqlScript();
             setSql(script["script"]);
@@ -29,6 +31,7 @@ function PartitioningScript() {
         }
 
         setLoading(true);
+        setLoadingMessage("Creating partitioned DB")
         try {
             const response = await deploySchema({ dbname: dbName, sql: sql });
             console.log("Database created successfully", response);
@@ -48,7 +51,7 @@ function PartitioningScript() {
 
     return (
         <>
-            <LoadingOverlay isLoading={loading} />
+            <LoadingOverlay isLoading={loading} message={loadingMessage} />
             <button className="generate-button" onClick={handleGenerateClick}>
                 Generate SQL script
             </button>

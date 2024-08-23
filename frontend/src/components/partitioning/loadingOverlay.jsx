@@ -1,12 +1,12 @@
 import React from 'react';
 import '../../css/loadingOverlay.css'; // Assuming you want to keep the CSS separate
 
-const LoadingOverlay = ({ isLoading }) => {
+const LoadingOverlay = ({ isLoading, message}) => {
   if (!isLoading) return null;
 
   return (
     <div className="loading-overlay">
-      Loading...
+      {message}...
     </div>
   );
 };
