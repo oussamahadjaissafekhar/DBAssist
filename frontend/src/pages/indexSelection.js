@@ -5,40 +5,38 @@ import WorkloadAnalyzer from '../components/WorkloadAnalyzer';
 import NavigationButtons from '../components/NavigationButtons';
 import InitialSelection from '../components/initialSelection';
 import AdaptationSelection from '../components/adaptationSelection';
-import IndexingComplete from '../components/indexingComplete'; // Import the new component
+import IndexingComplete from '../components/indexingComplete';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import '../css/IndexSelection.css'; // Ensure this CSS file includes the animations
-import { createIndexes } from '../api'; // Import the API function
+import '../css/IndexSelection.css';
+import { createIndexes } from '../api';
 
 function IndexSelection() {
     const [currentStep, setCurrentStep] = useState(0);
-    const [fileName, setFileName] = useState(''); // State to hold the file name
-    const [checkedIndexes, setCheckedIndexes] = useState([]); // State to hold checked indexes
-    const [isLoading, setIsLoading] = useState(false); // State to handle loading state
+    const [fileName, setFileName] = useState('');
+    const [checkedIndexes, setCheckedIndexes] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const { dbName } = useContext(DbContext);
 
     // Function to handle step change
     const handleStepChange = async (direction) => {
         if (direction === 'next' && currentStep === 2) {
-            setIsLoading(true); // Show loading overlay
+            setIsLoading(true);
 
             try {
-                // Send the full data structure to the backend
                 await createIndexes(checkedIndexes);
-                // Optionally handle the response data if needed
-                // console.log('Checked indexes sent successfully');
             } catch (error) {
-                // Optionally handle the error if needed
                 console.error('Failed to send checked indexes');
             } finally {
-                setIsLoading(false); // Hide loading overlay
+                setIsLoading(false);
+                // Reset checkedIndexes after sending them
+                setCheckedIndexes([]);
             }
         }
 
         setCurrentStep((prevStep) => {
             if (direction === 'next') {
-                return Math.min(prevStep + 1, 4); // 4 is the total number of steps - 1
+                return Math.min(prevStep + 1, 4);
             } else if (direction === 'prev') {
                 return Math.max(prevStep - 1, 0);
             }
@@ -138,7 +136,7 @@ function IndexSelection() {
                                     unmountOnExit
                                 >
                                     <div>
-                                        <IndexingComplete /> {/* Display the completion message */}
+                                        <IndexingComplete />
                                     </div>
                                 </CSSTransition>
                             )}

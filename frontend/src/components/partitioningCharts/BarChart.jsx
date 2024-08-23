@@ -3,26 +3,22 @@ import { Bar } from 'react-chartjs-2';
 
 function BarChart({ data }) {
     const chartData = {
-        labels: data.map(item => item.attribute),
+        labels: data.map(item => item.Attribute),
         datasets: [
             {
-                label: 'Where Uses',
-                data: data.map(item => item['Where Uses']),
+                label: 'Number of Updates',
+                data: data.map(item => item['NumberOfUpdates']),
                 backgroundColor: 'rgba(75, 192, 192, 0.6)',
-            },
-            {
-                label: 'Join Uses',
-                data: data.map(item => item['Join Uses']),
-                backgroundColor: 'rgba(153, 102, 255, 0.6)',
             },
         ],
     };
+
     const options = {
         responsive: true,
         plugins: {
             title: {
                 display: true,
-                text: 'Attribute Usage Frequency: "Where" vs "Join"',
+                text: 'Frequency of updates per attribute', // Set your desired title here
                 font: {
                     size: 16,
                 },
@@ -52,7 +48,7 @@ function BarChart({ data }) {
             y: {
                 title: {
                     display: true,
-                    text: 'Number of Uses',
+                    text: 'Number of Updates',
                 },
             },
         },

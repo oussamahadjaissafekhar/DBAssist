@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import BarChart from './workloadAnalyzerCharts/BarChart';
-import DoughnutChart from './workloadAnalyzerCharts/DoughnutChart';
 import StackedBarChart from './workloadAnalyzerCharts/StackedBarChart';
 import '../css/Modal.css';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';

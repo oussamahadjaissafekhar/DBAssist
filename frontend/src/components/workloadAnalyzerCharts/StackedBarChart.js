@@ -19,10 +19,43 @@ function StackedBarChart({ data }) {
     };
 
     const options = {
-        scales: {
-            x: { stacked: true },
-            y: { stacked: true },
-        },
+        plugins: {
+            title: {
+                display: true,
+                text: 'Stacked Bar Chart of Access Frequency by Attribute for "Join" and "Where" Uses',
+                font: {
+                    size: 16,
+                },
+                padding: {
+                    bottom: 20,
+                },
+            },
+            legend: {
+                display: false, // Hide the legend
+              },
+            tooltip: {
+              callbacks: {
+                label: (context) => `${context.dataset.label}: ${context.raw}`
+              }
+            }
+          },
+          responsive: true,
+          scales: {
+            x: {
+              stacked: true,
+              title: {
+                display: true,
+                text: 'Attributes',
+            },
+            },
+            y: {
+              stacked: true,
+              title: {
+                display: true,
+                text: 'Number of Updates',
+            },
+            }
+          }
     };
 
     return <Bar className='Bar' data={chartData} options={options} />;

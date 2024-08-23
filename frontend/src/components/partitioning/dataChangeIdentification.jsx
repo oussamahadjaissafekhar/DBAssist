@@ -1,19 +1,26 @@
-import React from 'react';
-import '../../css/dataChange.css'
+import React, { useState } from 'react';
+import DataChangeGraphs from './dataChangeGraphs';
+import '../../css/dataChange.css';
 
-function DataChangeIdentification({data}) {
+function DataChangeIdentification({ data }) {
+    console.log(data)
+    const [showModal, setShowModal] = useState(false);
 
-    const handleVisualizeClick = async () => {
+    const handleVisualizeClick = () => {
+        setShowModal(true); // Show the modal when the Visualize button is clicked
+    };
 
+    const handleCloseModal = () => {
+        setShowModal(false); // Close the modal when the close button is clicked
     };
 
     return (
         <div className="change-container">
             <div className="box-change">
                 <div className="box-change-header">
-                    <span className="title-change">Attribute update Statistics</span>
+                    <span className="title-change">Attribute Update Statistics</span>
                     <button className="box-change-button" onClick={handleVisualizeClick}>
-                        <div className='visualize-button-change'>                        
+                        <div className='visualize-button-change'>
                             <img src={require('../../icons/visualize.png')} alt="Visualize" className="box-button-icon" />
                             Visualize
                         </div>
@@ -50,6 +57,9 @@ function DataChangeIdentification({data}) {
                     </table>
                 </div>
             </div>
+
+            {/* Conditionally render the DataChangeGraphs modal */}
+            {showModal && <DataChangeGraphs data={data} onClose={handleCloseModal} />}
         </div>
     );
 }
