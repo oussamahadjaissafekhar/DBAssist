@@ -6,19 +6,22 @@ import NavigationButtons from '../components/NavigationButtons';
 import InitialSelection from '../components/initialSelection';
 import AdaptationSelection from '../components/adaptationSelection';
 import IndexingComplete from '../components/indexingComplete';
+import CurrentDBInfo from '../components/partitioning/currentDBInfo';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../css/IndexSelection.css';
-import { createIndexes } from '../api';
+import { createIndexes, showDBInfo } from '../api';
+import infoIcon from '../icons/info.png';  // ES6 import
 
 function IndexSelection() {
     const [currentStep, setCurrentStep] = useState(0);
     const [fileName, setFileName] = useState('');
     const [checkedIndexes, setCheckedIndexes] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+    const [isPopupVisible, setPopupVisible] = useState(false);
+    const [nodes, setNodes] = useState([]);
+    const [edges, setEdges] = useState([]);
     const { dbName } = useContext(DbContext);
 
-    // Function to handle step change
     const handleStepChange = async (direction) => {
         if (direction === 'next' && currentStep === 2) {
             setIsLoading(true);
@@ -29,7 +32,6 @@ function IndexSelection() {
                 console.error('Failed to send checked indexes');
             } finally {
                 setIsLoading(false);
-                // Reset checkedIndexes after sending them
                 setCheckedIndexes([]);
             }
         }
@@ -44,20 +46,34 @@ function IndexSelection() {
         });
     };
 
-    // Function to update the file name from WorkloadAnalyzer
     const handleFileNameChange = (name) => {
         setFileName(name);
     };
 
-    // Function to update checked indexes from InitialSelection
     const handleCheckedIndexesChange = (indexes) => {
         setCheckedIndexes(indexes);
     };
 
+    const handleDBinfoClick = async () => {
+        setPopupVisible(true);
+        try {
+            const response = await showDBInfo();
+            setNodes(response.nodes);
+            setEdges(response.edges);
+        } catch (error) {
+            console.error("Error getting db info:", error);
+            // Handle error (e.g., show message to user)
+        }
+    };
+    
+    const closePopup = () => {
+        setPopupVisible(false);
+    };
+
     return (
         <div style={{ textAlign: 'center', position: 'relative' }}>
-            {currentStep== 0 && <div style={{ position: 'relative', top: '10%', left: '0%', marginTop: '5%' }}><h2>Current database: {dbName}</h2></div>}
-            <Pipeline currentStep={currentStep} />
+            {/* Conditionally render Pipeline if currentStep is not 0 */}
+            {currentStep !== 0 && <Pipeline currentStep={currentStep} />}
             <div className="components-container">
                 <TransitionGroup>
                     <CSSTransition
@@ -71,13 +87,26 @@ function IndexSelection() {
                                 <CSSTransition
                                     in={currentStep === 0}
                                     timeout={300}
-                                    classNames="fade"
+                                    classNames={{
+                                        enter: 'fade-enter',
+                                        enterActive: 'fade-enter-active',
+                                        exit: 'header-container-exit',
+                                        exitActive: 'header-container-exit-active',
+                                    }}
                                     unmountOnExit
                                 >
-                                    <div className='start-button-div'>
-                                        <button className='start-button' onClick={() => handleStepChange('next')}>
-                                            Start indexing
-                                        </button>
+                                    <div>
+                                        <div className="header-container" onClick={handleDBinfoClick}>
+                                            <h2>Current database: {dbName}</h2>
+                                            <img src={infoIcon} alt="info" className="box-button-icon" />
+                                        </div>
+                                        <CurrentDBInfo isVisible={isPopupVisible} onClose={closePopup} nodes={nodes} edges={edges} />
+                                        <Pipeline currentStep={currentStep} />
+                                        <div className='start-button-div'>
+                                            <button className='start-button' onClick={() => handleStepChange('next')}>
+                                                Start indexing
+                                            </button>
+                                        </div>
                                     </div>
                                 </CSSTransition>
                             )}
@@ -90,9 +119,7 @@ function IndexSelection() {
                                     classNames="fade"
                                     unmountOnExit
                                 >
-                                    <div>
-                                        <WorkloadAnalyzer onFileNameChange={handleFileNameChange} />
-                                    </div>
+                                    <WorkloadAnalyzer onFileNameChange={handleFileNameChange} />
                                 </CSSTransition>
                             )}
 
@@ -104,12 +131,10 @@ function IndexSelection() {
                                     classNames="fade"
                                     unmountOnExit
                                 >
-                                    <div>
-                                        <InitialSelection 
-                                            fileName={fileName} 
-                                            onCheckedIndexesChange={handleCheckedIndexesChange} 
-                                        />
-                                    </div>
+                                    <InitialSelection 
+                                        fileName={fileName} 
+                                        onCheckedIndexesChange={handleCheckedIndexesChange} 
+                                    />
                                 </CSSTransition>
                             )}
 
@@ -121,9 +146,7 @@ function IndexSelection() {
                                     classNames="fade"
                                     unmountOnExit
                                 >
-                                    <div>
-                                        <AdaptationSelection checkedIndexes={checkedIndexes} />
-                                    </div>
+                                    <AdaptationSelection checkedIndexes={checkedIndexes} />
                                 </CSSTransition>
                             )}
 
@@ -135,9 +158,7 @@ function IndexSelection() {
                                     classNames="fade"
                                     unmountOnExit
                                 >
-                                    <div>
-                                        <IndexingComplete />
-                                    </div>
+                                    <IndexingComplete />
                                 </CSSTransition>
                             )}
                         </div>
@@ -146,7 +167,6 @@ function IndexSelection() {
             </div>
             <NavigationButtons currentStep={currentStep} numbersteps={4} handleStepChange={handleStepChange} />
 
-            {/* Loading Overlay */}
             {isLoading && (
                 <div className="loading-overlay">
                     <div className="loading-message">

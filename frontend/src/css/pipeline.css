@@ -4,16 +4,13 @@
     align-items: center;
     width: 100%; /* Full viewport width */
     flex-direction: column;
-    transition: min-height 0.5s ease-in-out; /* Animation for height change */
+    transition: min-height 10s ease-in-out; /* Animation for height change */
 }
 
 .pipeline-start {
-    min-height: 90vh;
-}
-
-.pipeline-start-partitioning {
     min-height: 60vh;
 }
+
 
 
 .pipeline-other {

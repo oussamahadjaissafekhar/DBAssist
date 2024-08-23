@@ -1,30 +1,33 @@
-.fade-enter {
-    opacity: 0;
+/* Centering the header-container with smooth transition effect */
+.header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 60px auto 40px; /* Center horizontally with margin auto */
+    position: relative; /* Ensure position context for animations */
+    transition: transform 10ms ease-in-out, opacity 300ms ease-in-out;
 }
 
-.fade-enter-active {
+/* Adding smooth exit animation */
+.header-container-exit {
     opacity: 1;
-    transition: opacity 300ms ease-in-out;
+    transform: scale(1) translateY(0); /* Initial state */
 }
 
-.fade-exit {
-    opacity: 1;
-}
-
-.fade-exit-active {
+.header-container-exit-active {
     opacity: 0;
-    transition: opacity 10ms ease-in-out;
+    transform: scale(0.9) translateY(-20px); /* Scale down and move up */
+    transition: transform 10ms ease-in-out, opacity 10ms ease-in-out;
 }
 
-/* Ensures that the start button does not move */
-.start-button-div {
-    transition: opacity 300ms ease-in-out;
-}
 
+/* Ensure that components container has proper spacing and alignment */
 .components-container {
     width: 900px;
     height: 550px;
     margin: 0 auto;
+    position: relative; /* Ensure proper positioning context for children */
 }
 
 .loading-overlay {

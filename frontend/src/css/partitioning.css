@@ -1,0 +1,48 @@
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in-out;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 10ms ease-in-out;
+}
+
+/* Ensures that the start button does not move */
+.start-button-div {
+    transition: opacity 300ms ease-in-out;
+}
+
+.components-container {
+    width: 900px;
+    height: 550px;
+    margin: 0 auto;
+    position: relative; /* Ensure proper positioning context for children */
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-message {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
