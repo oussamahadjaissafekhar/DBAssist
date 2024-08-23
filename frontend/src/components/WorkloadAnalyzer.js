@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { analyzeWorkload } from '../api'; // Import the API function
+import { analyzeWorkloadForPartitioning } from '../api';
 import Modal from './Modal';
 import '../css/WorkloadAnalyzer.css';
 
@@ -8,7 +8,7 @@ function WorkloadAnalyzer({ onFileNameChange }) {
     const [errorMessage, setErrorMessage] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [showModal, setShowModal] = useState(false); // State to control modal visibility
+    const [showModal, setShowModal] = useState(false);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -30,13 +30,17 @@ function WorkloadAnalyzer({ onFileNameChange }) {
     };
 
     const handleAnalyzeClick = async () => {
+        // If no file selected, show an error
         if (!selectedFile) {
             setErrorMessage("You must select a file before analyzing.");
             return;
         }
+        console.log("Selected file :", selectedFile.name);
         setLoading(true);
         try {
-            const response = await analyzeWorkload(selectedFile);
+            // Call the function from api.js and pass the selected file
+            const response = await analyzeWorkloadForPartitioning(selectedFile);
+            console.log("Response:", response.data);
             setData(response.data); // Update state with the fetched data
         } catch (error) {
             console.error("Error analyzing workload:", error);

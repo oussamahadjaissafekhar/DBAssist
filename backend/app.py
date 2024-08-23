@@ -15,7 +15,7 @@ from threading import Thread
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
-connect = "dbname= user= password="
+connect = "dbname=ssb user=postgres password=postgres"
 
 # global variable that contains all the partitioning data don't touch please
 globalCredentials = {}
@@ -114,15 +114,25 @@ def initialSelection_backend():
 @app.route('/checkedIndexes', methods=['POST'])
 def create_indexes():
     print("Creating indexes started ...")
+    
+    # Retrieve JSON data from the request
     data = request.json
+    
     # Extract selected indexes from the JSON data
-    checked_indexes = data.get('checkedIndexes', [])    
+    checked_indexes = data.get('checkedIndexes', [])
+    
+    # Ensure no residual state is kept by logging the received data
+    print(f"Received checked indexes: {checked_indexes}")
+
+    # Check if any indexes are selected
     if not checked_indexes:
         return jsonify({"error": "No indexes selected"}), 400
+    
     # Create the directory if it does not exist
     temp_directory = './temp'
     if not os.path.exists(temp_directory):
         os.makedirs(temp_directory)
+    
     # Generate the SQL statements from selected indexes
     sql_statements = []
     for index in checked_indexes:
@@ -130,6 +140,7 @@ def create_indexes():
         column_name = index.get('indexColumn')
         if table_name and column_name:
             sql_statements.append(f"CREATE INDEX idx_{table_name}_{column_name} ON {table_name} ({column_name});")
+    
     if not sql_statements:
         return jsonify({"error": "No valid indexes selected"}), 400
 
@@ -138,30 +149,37 @@ def create_indexes():
     with open(sql_file_path, 'w+') as file:
         file.write('\n'.join(sql_statements))
 
-    #Create the index usage matrix and save it into a file
+    # Create the index usage matrix and save it into a file
     IndexUsageMatrix = "./temp/IndexUsageMatrix.csv"
-    IndexFilePath = "./temp/final_index_configuration.sql"
-    print("The DataFrame is empty. Initializing...")
-    df = initialise_matrix(IndexFilePath)
+    print("Initializing the index usage matrix...")
+    df = initialise_matrix(sql_file_path)
     df.to_csv(IndexUsageMatrix, index=False)
+    
     # Create the selected indexes in the database
     try:
         # Replace `connect` with your database connection string
         connection = psycopg2.connect(connect)
         cursor = connection.cursor() 
+        
         # Execute each SQL statement
         for statement in sql_statements:
             cursor.execute(statement)
+        
         # Commit the transaction
         connection.commit()
+        
         # Close the cursor and the connection
         cursor.close()
         connection.close()
+
+        # Log success message
+        print("Indexes created successfully.")
         return jsonify({"message": "Indexes created successfully and SQL file created"}), 200
+
     except Exception as e:
+        # Log the error and respond with an error message
         print(f"An error occurred: {e}")
         return jsonify({"error": "An error occurred while creating indexes"}), 500
-    
 # This function executes the query and launch the adaptation mechanism with index maintenance 
 @app.route('/executeQuery', methods=['POST'])
 def execute_query():

@@ -16,7 +16,7 @@ from Paritioning_system.WorkloadAnalyzer.Functions.verifyPredicats import verify
 from Paritioning_system.IndexSelector.InitialSelection import get_table_name
 from Paritioning_system.WorkloadAnalyzer.Functions.ReadSqlFiles import read_queries_from_file
 
-indexes = []
+
 database_attributes = []
 database_tables = []
 
@@ -29,12 +29,14 @@ pd.set_option('display.float_format', lambda x: '%.6f' % x)
 # This function initializes the data frame [Index, LFU, LRU]
 def initialise_matrix(IndexFilePath):
     # Read the selected indexes from the file {IndexFilePath}
+    indexes = []
     with open(IndexFilePath, 'r') as file:
         for line in file:
             index_statement = line.strip()
             index = index_statement.split('(')[1].split(')')[0]
             indexes.append(index)
-    
+    print("Data frame with indexes :")
+    print(indexes)
     # Read the dataframe containing information about frequency of the attribute [table, attribute, frequency] 
     df_1 = pd.read_csv("./temp/dataframe_1.csv")
     

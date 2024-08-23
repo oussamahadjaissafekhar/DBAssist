@@ -7,7 +7,7 @@ import CurrentDBInfo from '../components/partitioning/currentDBInfo';
 import '../css/dbInfo.css'
 import { showDBInfo, getDataChangeStats} from '../api';
 import DataChangeIdentification from '../components/partitioning/dataChangeIdentification';
-import WorkloadAnalyzerForPartitioning from '../components/partitioning/workloadAnalyzerForPartitioning';
+import WorkloadAnalyzer from '../components/WorkloadAnalyzer'
 import LoadingOverlay from '../components/partitioning/loadingOverlay';
 import KeyChoice from '../components/partitioning/keyChoice';
 import Schema from '../components/partitioning/schema';
@@ -22,6 +22,8 @@ function Partitioning(props) {
     const [edges, setEdges] = useState([])
     const [isPopupVisible, setPopupVisible] = useState(false)   //pop up for db info
     const [dataChangeStats, setDataChangeStats] = useState(null)
+    const [fileName, setFileName] = useState(''); // State to hold the file name
+
     
     // Function to handle step change
     const handleStepChange = (direction) => {
@@ -33,6 +35,10 @@ function Partitioning(props) {
         }
         return prevStep;
     });
+    };
+
+    const handleFileNameChange = (name) => {
+        setFileName(name);
     };
 
     const handleDBinfoClick = async () => {
@@ -124,10 +130,9 @@ function Partitioning(props) {
                                 classNames="fade"
                                 unmountOnExit
                             >
-                                <div>
-                                    <h1>Analyze workload</h1>
-                                    <WorkloadAnalyzerForPartitioning></WorkloadAnalyzerForPartitioning>
-                                </div>
+                                    <div>
+                                        <WorkloadAnalyzer onFileNameChange={handleFileNameChange}/>
+                                    </div>
                             </CSSTransition>
                         )}
 
