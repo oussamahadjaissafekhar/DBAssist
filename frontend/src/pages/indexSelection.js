@@ -98,9 +98,7 @@ function IndexSelection() {
                                     <div>
                                         <div className="header-container" onClick={handleDBinfoClick}>
                                             <h2>Current database: {dbName}</h2>
-                                            <img src={infoIcon} alt="info" className="box-button-icon" />
                                         </div>
-                                        <CurrentDBInfo isVisible={isPopupVisible} onClose={closePopup} nodes={nodes} edges={edges} />
                                         <Pipeline currentStep={currentStep} />
                                         <div className='start-button-div'>
                                             <button className='start-button' onClick={() => handleStepChange('next')}>
