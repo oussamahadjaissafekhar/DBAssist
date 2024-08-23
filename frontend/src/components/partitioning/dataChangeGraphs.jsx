@@ -1,7 +1,9 @@
+// File: src/components/DataChangeGraphs.js
+
 import React, { useState } from 'react';
 import BarChart from '../partitioningCharts/BarChart';
 import StackedBarChart from '../partitioningCharts/StackedBarChart';
-import PieChart from '../partitioningCharts/PieChart';
+import TablePieChart from '../partitioningCharts/TablePieChart'; // Import the pie chart component
 import '../../css/Modal.css';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
@@ -19,10 +21,29 @@ ChartJS.register(
 function DataChangeGraphs({ data, onClose }) {
     const [currentChart, setCurrentChart] = useState(0);
 
+    // Group the data by 'Table' property
+    const groupedData = data.reduce((acc, item) => {
+        if (!acc[item.Table]) {
+            acc[item.Table] = [];
+        }
+        acc[item.Table].push(item);
+        return acc;
+    }, {});
+
+    // Generate a list of TablePieCharts based on the grouped data
+    const pieCharts = Object.keys(groupedData).map((tableName, index) => (
+        <TablePieChart 
+            key={`table-pie-chart-${index}`} 
+            tableName={tableName} 
+            data={groupedData[tableName]} 
+        />
+    ));
+
+    // Add the BarChart, StackedBarChart, and all TablePieCharts into the charts array
     const charts = [
         <BarChart data={data} key="bar" />,
         <StackedBarChart data={data} key="stacked-bar" />,
-        <PieChart data={data} key="pie-chart"/>
+        ...pieCharts,  // Spread the pie charts into the array
     ];
 
     if (!data || data.length === 0) {
