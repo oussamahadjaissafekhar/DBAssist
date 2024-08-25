@@ -9,9 +9,9 @@ from Paritioning_system.PartitioningSchemaGenerator.PartitioningKeySelector impo
 from Paritioning_system.PartitioningSchemaGenerator.PartitioningSchemaGenerator import generatePartitioningSchema, generateDBPartitioningSQLScript
 from Paritioning_system.utils import createPartitionedDB, createConnectionString
 import copy
-from Paritioning_system.PartitioningSchemaGenerator.DDL import tableColumns
+from Paritioning_system.PartitioningSchemaGenerator.DDL import staticTableDDLs
 
-def dump_schema(credentials)->str:
+def dump_schema(credentials):
     print("enetred dump schema")
     command = [
         'pg_dump',
@@ -22,9 +22,41 @@ def dump_schema(credentials)->str:
     ]
     subprocess.run(command, check=True)
 
-    with open('./temp/DDL.sql', 'r') as file:
-        ddl_content = file.read()
-    return ddl_content
+def extractDDLFromDump(credentials):
+    if credentials['dbname'].lower() == "ssb":
+        return staticTableDDLs
+    
+    with open('./temp/DDL.sql', 'r') as schemaFile:
+        lines = schemaFile.readlines()
+
+    DDLs = {}
+    count = 0
+    while count < len(lines):
+        line = lines[count].strip()
+        print(f"line {count}")
+        if line.startswith("CREATE TABLE"):
+            line = line.replace("CREATE TABLE", "").strip()
+            line = line.replace("public.", "").strip()
+            table = line.split(" ")[0]
+            tableDDL = f"CREATE TABLE {table} ( \n"
+            nextLineIndex = count + 1 
+            nextLine = lines[nextLineIndex].strip() if nextLineIndex < len(lines) else None
+
+            skip = 1
+            while nextLine and nextLine != ");":
+                tableDDL += nextLine + "\n"
+                if nextLineIndex < len(lines):
+                    skip += 1
+                    nextLineIndex = nextLineIndex + 1
+                    nextLine = lines[nextLineIndex].strip()
+                else:
+                    nextLine = None
+            
+            tableDDL += ")"
+            DDLs[table] = tableDDL
+            count += skip
+        count += 1
+    return DDLs
 
 def identifyERDiagramNodesAndEdges(connect: str, globalCredentials: dict):
      # Check if the database name is 'ssb'
@@ -41,7 +73,7 @@ def identifyERDiagramNodesAndEdges(connect: str, globalCredentials: dict):
             { "id": "lo_custkey", "source": "lineorder", "target": "customer", "animated": True, "label": "lo_custkey" },
             { "id": "lo_partkey", "source": "lineorder", "target": "part", "animated": True, "label": "lo_partkey" },
             { "id": "lo_suppkey", "source": "lineorder", "target": "supplier", "animated": True, "label": "lo_suppkey" },
-            { "id": "lo_orderdate", "source": "lineorder", "target": "dates", "animated": True, "label": "lo_orderdate" },
+            { "id": "lo_orderdate", "source": "lineorder", "target": "dates", "animated": True, "label": "lo_orderdate, lo_commitdate" },
         ]
         return nodes, edges
     
@@ -148,8 +180,13 @@ def generatedPartitioningSchema(predicateStats: pd.DataFrame, chosenAttributeFor
     schema, serializableSchema = generatePartitioningSchema(predicateStats, chosenAttributeForEachTable, connect, partitioningThreshold)
     return schema, serializableSchema 
 
-def generateSQLScript(schema: dict)-> str:
-    return generateDBPartitioningSQLScript(schema)
+def generateSQLScript(schema: dict, credentials: dict)-> str:
+    dump_schema(credentials)
+    DDLs = extractDDLFromDump(credentials)
+    print("DDLS")
+    print(DDLs.keys())
+    print(DDLs)
+    return generateDBPartitioningSQLScript(schema, DDLs)
 
 def executePartitioningScript(dbname: str, sql: str, credentials: dict):
     credentialsCopy = copy.deepcopy(credentials)
@@ -157,7 +194,52 @@ def executePartitioningScript(dbname: str, sql: str, credentials: dict):
     createPartitionedDB(dbname, sql, credentialsCopy)
     return
 
-def migrateData(oldDB: str, newDB: str, credentials: dict, userTables: list, migration_status: dict):
+def getTableColumns(connect: str):
+    connection = psycopg2.connect(connect)
+    query = """
+    SELECT 
+        table_name, 
+        column_name
+    FROM 
+        information_schema.columns
+    WHERE 
+        table_schema = 'public'
+    ORDER BY 
+        table_name, ordinal_position;
+    """
+    
+    cursor = connection.cursor()
+    cursor.execute(query)
+    
+    tables = {}
+    for table_name, column_name in cursor.fetchall():
+        if table_name not in tables:
+            tables[table_name] = []
+        tables[table_name].append(column_name)
+
+    tableColumns = {}
+    for table in tables.keys():
+        thisTableColumns = "("
+        thisTableQuestionMarks = "("
+        columns = tables[table]
+        for column in columns:
+            thisTableColumns += f"{column}, "
+            thisTableQuestionMarks += "%s, "
+        
+        thisTableColumns = thisTableColumns[:-2]
+        thisTableQuestionMarks = thisTableQuestionMarks[:-2]
+
+        thisTableColumns += ") VALUES "
+        thisTableQuestionMarks += ")"
+
+        tableColumns[table] = thisTableColumns + thisTableQuestionMarks
+    
+    cursor.close()
+    return tableColumns
+
+def migrateData(oldDB: str, newDB: str, credentials: dict, userTables: list, migration_status: dict, connect: str):
+
+    tableColumns = getTableColumns(connect)
 
     connectCredentials = copy.deepcopy(credentials)
     del connectCredentials["dbname"]

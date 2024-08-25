@@ -2,7 +2,6 @@ import pandas as pd
 import sqlparse
 from sqlparse.sql import Identifier
 from sqlparse.tokens import Keyword, Whitespace, Comparison
-from Paritioning_system.PartitioningSchemaGenerator.DDL import tableDDLs
 from typing import List
 from Paritioning_system.PartitioningSchemaGenerator.semiClosedInterval import *
 from Paritioning_system.PartitioningSchemaGenerator.utils import *
@@ -138,14 +137,14 @@ def constructListPartitioningSchema(attributePredicateStats: pd.DataFrame, disti
     partitions = mergePartitionsForLists(partitions, maxPartitions, attributeType, attributePredicateStats)
     return partitions
 
-def generateListPartitioningSQLScript(attribute: str, table: str, partitions: List[List])-> str:
+def generateListPartitioningSQLScript(attribute: str, table: str, partitions: List[List], DDLs: dict)-> str:
     
     script = ''
 
     tableSQLScrpit = ""
     # generating script 
     # First the table DDL 
-    tableSQLScrpit = tableDDLs[table] + "PARTITION BY LIST(" + attribute + ");" + "\n"
+    tableSQLScrpit = DDLs[table] + "PARTITION BY LIST(" + attribute + ");" + "\n"
     script = script + tableSQLScrpit
     # the DDL for each partition of the values present in the workload
     for index, partition in enumerate(partitions):

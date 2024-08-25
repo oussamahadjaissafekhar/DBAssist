@@ -75,7 +75,7 @@ def generatePartitioningSchema(predicateStats: pd.DataFrame, chosenAttributeForE
 
     return DBPartitioningSchema, jsonSerializableSchema
 
-def generateDBPartitioningSQLScript(schema: dict)->str:
+def generateDBPartitioningSQLScript(schema: dict, DDLs: dict)->str:
     script = ""
     for table in schema.keys():
         attribute = schema[table]['attribute']
@@ -83,8 +83,8 @@ def generateDBPartitioningSQLScript(schema: dict)->str:
         partitions = schema[table]['partitions']
 
         if partitioningType == "List": 
-            script = script + generateListPartitioningSQLScript(attribute, table, partitions)
+            script = script + generateListPartitioningSQLScript(attribute, table, partitions, DDLs)
         elif partitioningType == "Range": 
-            script = script + generateRangePartitioningSQLScript(attribute, table, partitions)
+            script = script + generateRangePartitioningSQLScript(attribute, table, partitions, DDLs)
 
     return script

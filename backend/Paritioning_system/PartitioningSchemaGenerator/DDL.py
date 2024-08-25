@@ -91,7 +91,7 @@ CREATE TABLE lineorder
 """
 
 
-tableDDLs = {'customer': customerDDL, 'dates': datesDDL, 'supplier': supplierDDL, 'part': partDDL, 'lineorder': lineorderDDL}
+staticTableDDLs = {'customer': customerDDL, 'dates': datesDDL, 'supplier': supplierDDL, 'part': partDDL, 'lineorder': lineorderDDL}
 
 customerColumns = "(c_custkey, c_name, c_address, c_city, c_nation, c_region, c_phone, c_mktsegment, supp) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 datesColumns = "(d_datekey, d_date, d_dayofweek, d_month, d_year, d_yearmonthnum, d_yearmonth, d_daynuminweek, d_daynuminmonth, d_daynuminyear, d_monthnuminyear, d_weeknuminyear, d_sellingseason, d_lastdayinweekfl, d_lastdayinmonthfl, d_holidayfl, d_weekdayfl, supp) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"

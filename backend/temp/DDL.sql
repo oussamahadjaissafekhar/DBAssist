@@ -16,20 +16,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: hypopg; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS hypopg WITH SCHEMA public;
-
-
---
--- Name: EXTENSION hypopg; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION hypopg IS 'Hypothetical indexes for PostgreSQL';
-
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -145,13 +131,6 @@ CREATE TABLE public.supplier (
 
 
 ALTER TABLE public.supplier OWNER TO postgres;
-
---
--- Name: ind; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX ind ON public.lineorder USING btree (lo_custkey);
-
 
 --
 -- PostgreSQL database dump complete

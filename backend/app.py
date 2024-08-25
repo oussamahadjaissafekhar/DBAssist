@@ -295,7 +295,7 @@ def get_alreadyGeneratedSchema():
 @app.route("/partitioning/sqlScript", methods=["POST"])
 def get_sqlScript():
     global partitioningData
-    script = generateSQLScript(partitioningData["schema"])
+    script = generateSQLScript(partitioningData["schema"], globalCredentials)
     print(script)
     return jsonify({"script": script})
 
@@ -331,7 +331,7 @@ def start_migration():
     print(userTables)
     
     # Start migration in a separate thread
-    thread = Thread(target=migrateData, args=(oldDB, newDB, connectCredentials, userTables, migration_status))
+    thread = Thread(target=migrateData, args=(oldDB, newDB, connectCredentials, userTables, migration_status, connect))
     thread.start()
 
     return jsonify({"message": "Migration started"}), 200

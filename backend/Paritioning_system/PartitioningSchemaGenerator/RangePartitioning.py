@@ -1,5 +1,4 @@
 import pandas as pd
-from Paritioning_system.PartitioningSchemaGenerator.DDL import tableDDLs
 from typing import List
 from Paritioning_system.PartitioningSchemaGenerator.semiClosedInterval import *
 from Paritioning_system.PartitioningSchemaGenerator.utils import *
@@ -250,11 +249,11 @@ def constructRangePartitioningSchema(attribute: str, table: str, attributePredic
     partitions = mergePartitionsForRanges(partitions, maxPartitions, attributePredicateStats)
     return partitions
 
-def generateRangePartitioningSQLScript(attribute: str, table: str, partitions: List[SemiClosedInterval])-> str:
+def generateRangePartitioningSQLScript(attribute: str, table: str, partitions: List[SemiClosedInterval], DDLs: dict)-> str:
     script = ''
     # First the table DDL
     tableSQLScrpit = "" 
-    tableSQLScrpit = tableDDLs[table] + "PARTITION BY RANGE(" + attribute + ");" + "\n"
+    tableSQLScrpit = DDLs[table] + "PARTITION BY RANGE(" + attribute + ");" + "\n"
     script = script + tableSQLScrpit
     for index, partition in enumerate(partitions):
         partitionSQLScript = "CREATE TABLE " + table + "_" + str(index+1) + " PARTITION OF " + table + " FOR VALUES FROM (" + str(partition.lowerBound) + ") TO (" + str(partition.upperBound) + ");" +"\n"
