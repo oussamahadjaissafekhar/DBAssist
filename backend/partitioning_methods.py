@@ -10,6 +10,7 @@ from Paritioning_system.PartitioningSchemaGenerator.PartitioningSchemaGenerator 
 from Paritioning_system.utils import createPartitionedDB, createConnectionString
 import copy
 from Paritioning_system.PartitioningSchemaGenerator.DDL import staticTableDDLs
+import re
 
 def dump_schema(credentials):
     print("enetred dump schema")
@@ -32,8 +33,9 @@ def extractDDLFromDump(credentials):
     DDLs = {}
     count = 0
     while count < len(lines):
+        print(count)
         line = lines[count].strip()
-        print(f"line {count}")
+        # Taking into account only the create table lines
         if line.startswith("CREATE TABLE"):
             line = line.replace("CREATE TABLE", "").strip()
             line = line.replace("public.", "").strip()
@@ -43,8 +45,35 @@ def extractDDLFromDump(credentials):
             nextLine = lines[nextLineIndex].strip() if nextLineIndex < len(lines) else None
 
             skip = 1
+            # adding the column lines
             while nextLine and nextLine != ");":
+                print(nextLineIndex)
+                # adjusting character columns 
+                lineComponents = nextLine.split(" ")
+                attributeType = lineComponents[1].strip().lower()
+                # regex for capturing the possible cases of character or character(x)
+                pattern = r'character(?:\(\d+\))?'
+                numberOfChars = 0
+                if re.match(pattern, attributeType):
+                    if attributeType == "character":
+                        # case where max chars is defined in the varying keyword
+                        varying = lineComponents[2].strip().lower()
+                        if varying.startswith('varying'):
+                            varying = varying.removeprefix("varying")
+                            varying = varying.removeprefix('(').removesuffix('),').removesuffix(')')
+                            numberOfChars = int(varying)
+                            numberOfChars +=1 
+                            lineComponents[2] = f"varying({numberOfChars})"
+                    else:
+                        # case where max chars is defined with the character keyword
+                        character = attributeType.removeprefix("character")
+                        character = character.removeprefix('(').removesuffix('),').removesuffix(')')
+                        numberOfChars = int(character)
+                        numberOfChars += 1
+                        lineComponents[1] = f"character({numberOfChars})"
+                nextLine = " ".join(lineComponents)
                 tableDDL += nextLine + "\n"
+
                 if nextLineIndex < len(lines):
                     skip += 1
                     nextLineIndex = nextLineIndex + 1
@@ -73,7 +102,7 @@ def identifyERDiagramNodesAndEdges(connect: str, globalCredentials: dict):
             { "id": "lo_custkey", "source": "lineorder", "target": "customer", "animated": True, "label": "lo_custkey" },
             { "id": "lo_partkey", "source": "lineorder", "target": "part", "animated": True, "label": "lo_partkey" },
             { "id": "lo_suppkey", "source": "lineorder", "target": "supplier", "animated": True, "label": "lo_suppkey" },
-            { "id": "lo_orderdate", "source": "lineorder", "target": "dates", "animated": True, "label": "lo_orderdate, lo_commitdate" },
+            { "id": "lo_orderdate", "source": "lineorder", "target": "dates", "animated": True, "label": "lo_orderdate + lo_commitdate" },
         ]
         return nodes, edges
     
