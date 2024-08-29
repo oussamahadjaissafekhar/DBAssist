@@ -43,9 +43,6 @@ def connect_to_db():
         globalCredentials['dbname'] = db_name
         globalCredentials['user'] = user
         globalCredentials['password'] = password
-
-        dump_schema(globalCredentials)
-        print(extractDDLFromDump(globalCredentials))
         return jsonify({"status": "connected"}), 200
     
     except psycopg2.Error as e:
