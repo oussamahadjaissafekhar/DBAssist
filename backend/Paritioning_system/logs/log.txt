@@ -12065,5 +12065,71 @@
 	WHERE p_partkey = FLOOR(RANDOM() * 1400000);
 2024-07-23 11:41:47.361 CEST [1728] LOG:  duration: 310.341 ms
 2024-07-23 11:41:47.559 CEST [2932] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
+2024-07-23 11:40:24.409 CEST [12340] LOG:  statement: UPDATE lineorder
+
+	SET lo_quantity = (lo_quantity + 1) % 51
+
+	WHERE lo_orderkey = FLOOR(RANDOM() * 6000000);
+2024-07-23 11:40:25.649 CEST [12340] LOG:  duration: 1240.216 ms
 
 	

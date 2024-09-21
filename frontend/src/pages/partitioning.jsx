@@ -192,7 +192,7 @@ function Partitioning() {
                                     unmountOnExit
                                 >
                                     <div>
-                                        <h1>Data migration</h1>
+                                        <h1>Data insertion</h1>
                                         <DataMigration></DataMigration>
                                     </div>
                                 </CSSTransition>

@@ -26,10 +26,10 @@ function DataMigration() {
     return (
         <>
             <h4>
-                The partitioned database is successfully created, all that's left is to migrate your data into it!
+                The partitioned database is successfully created, all that's left is to transfer your data into it!
             </h4>
             <button className="migrate-button" onClick={handleMigrateClick}>
-                Migrate data
+                Insert data
             </button>
 
             {showPopup && (

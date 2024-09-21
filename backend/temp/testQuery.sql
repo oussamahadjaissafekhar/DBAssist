@@ -1,2 +1,0 @@
-SELECT d_year, sum(CASE WHEN d_weeknuminyear <= 13 THEN lo_revenue ELSE 0 END) AS pre_promotion_revenue, sum(CASE WHEN d_weeknuminyear > 13 THEN lo_revenue ELSE 0 END) AS post_promotion_revenue FROM lineorder, dates WHERE lo_orderdate = d_datekey AND d_year = 1997 GROUP BY d_year;
-SELECT p_category, c_region, c_nation, c_city, sum(lo_revenue) AS lo_revenue FROM lineorder, part, customer WHERE lo_partkey = p_partkey AND lo_custkey = c_custkey GROUP BY p_category, c_region, c_nation, c_city ORDER BY p_category, c_region, c_nation, c_city;
