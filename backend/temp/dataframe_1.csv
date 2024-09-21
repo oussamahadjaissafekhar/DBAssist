@@ -1,0 +1,21 @@
+attribute,Where Uses,Join Uses
+p_category,5,0
+s_suppkey,0,80
+lo_quantity,9,0
+c_city,37,0
+p_mfgr,5,0
+lo_orderdate,0,85
+s_region,39,0
+d_weeknuminyear,3,0
+lo_custkey,0,75
+d_datekey,0,85
+lo_discount,10,0
+d_year,98,0
+s_city,24,0
+c_nation,6,0
+lo_shipmode,19,0
+p_brand,30,0
+s_nation,16,0
+lo_suppkey,0,80
+c_custkey,0,75
+c_region,29,0
